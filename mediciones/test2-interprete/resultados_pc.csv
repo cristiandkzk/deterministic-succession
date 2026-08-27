@@ -1,0 +1,28 @@
+# Test 2 — presupuesto del interprete
+# host: x86_64-windows  wasm: 228573 bytes
+
+engine,level,mode,ns_per_verify,verifies_per_sec,slowdown_vs_native,compile_ms
+native,ML-DSA-44,decode+verify,107160,9332,1.00,-
+wasmtime-cranelift,ML-DSA-44,decode+verify,392462,2548,3.66,242.9
+wasmtime-pulley,ML-DSA-44,decode+verify,8418892,119,78.56,275.4
+wasmi,ML-DSA-44,decode+verify,3108760,322,29.01,1.5
+native,ML-DSA-44,verify_only,43691,22888,1.00,-
+wasmtime-cranelift,ML-DSA-44,verify_only,248077,4031,5.68,230.6
+wasmtime-pulley,ML-DSA-44,verify_only,5133393,195,117.49,258.3
+wasmi,ML-DSA-44,verify_only,1972524,507,45.15,1.2
+native,ML-DSA-65,decode+verify,172022,5813,1.00,-
+wasmtime-cranelift,ML-DSA-65,decode+verify,591224,1691,3.44,227.2
+wasmtime-pulley,ML-DSA-65,decode+verify,12884401,78,74.90,263.1
+wasmi,ML-DSA-65,decode+verify,4816835,208,28.00,1.5
+native,ML-DSA-65,verify_only,60699,16475,1.00,-
+wasmtime-cranelift,ML-DSA-65,verify_only,353831,2826,5.83,221.2
+wasmtime-pulley,ML-DSA-65,verify_only,7388541,135,121.72,254.6
+wasmi,ML-DSA-65,verify_only,2889753,346,47.61,1.3
+native,ML-DSA-87,decode+verify,278883,3586,1.00,-
+wasmtime-cranelift,ML-DSA-87,decode+verify,895815,1116,3.21,221.1
+wasmtime-pulley,ML-DSA-87,decode+verify,19526184,51,70.02,254.3
+wasmi,ML-DSA-87,decode+verify,7249428,138,25.99,1.2
+native,ML-DSA-87,verify_only,86929,11504,1.00,-
+wasmtime-cranelift,ML-DSA-87,verify_only,524222,1908,6.03,222.8
+wasmtime-pulley,ML-DSA-87,verify_only,11211070,89,128.97,255.2
+wasmi,ML-DSA-87,verify_only,4354637,230,50.09,1.2

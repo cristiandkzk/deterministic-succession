@@ -1,0 +1,23 @@
+# Cross-compilacion desde Windows hacia el telefono (aarch64, Termux/Android).
+# Se usa solo cuando se pasa --target aarch64-linux-android; las corridas
+# nativas en la PC no lo miran.
+#
+#   cargo build --release --target aarch64-linux-android --features jit
+#
+# Existe porque cranelift-codegen no compila dentro de Termux: rustc desborda
+# la pila parseando el match que genera ISLE para el backend ARM64.
+#
+# Se apunta a clang.exe directo y no al wrapper aarch64-linux-android30-clang.cmd
+# que trae el NDK: ese .cmd calcula el directorio del binario y despues lo pisa
+# con vacio (`set "_BIN_DIR=" && "%_BIN_DIR%clang.exe"`), asi que termina
+# buscando clang.exe en el PATH y no lo encuentra. Por eso el --target va
+# explicito aca.
+
+[target.aarch64-linux-android]
+linker = "C:/Users/Cristian/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe"
+rustflags = ["-C", "link-arg=--target=aarch64-linux-android30"]
+
+[env]
+CC_aarch64-linux-android = "C:/Users/Cristian/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe"
+CFLAGS_aarch64-linux-android = "--target=aarch64-linux-android30"
+AR_aarch64-linux-android = "C:/Users/Cristian/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar.exe"

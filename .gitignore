@@ -1,0 +1,55 @@
+# ─── Artefactos de compilación ────────────────────────────────────────────────
+# El grueso de test2-interprete/telefono/host/target: ~1,3 GB de objetos de Rust.
+# Se regeneran con `cargo build`; el procedimiento está en test2-interprete/RESULTADOS.md.
+target/
+**/target/
+*.rlib
+*.rmeta
+*.pdb
+
+# Los binarios compilados sí se ignoran, pero los guests empotrados NO:
+# guest.wasm y los ELF de RISC-V van al repo porque son la entrada del benchmark
+# y RESULTADOS.md los declara parte del paquete autocontenido.
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# ─── Sistema y editores ───────────────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+.DS_Store
+.idea/
+*.swp
+
+# ─── Fuera del repo por decisión, no por tamaño ───────────────────────────────
+# CONTEXTO.md es el handoff operativo: el mapa de archivos, los hilos abiertos con
+# su razón, y sobre todo el razonamiento — qué se descartó, por qué murió cada
+# arreglo, qué ataque sobrevivió cada pieza. El paper dice a qué se llegó; CONTEXTO
+# dice por qué, y es lo caro de rederivar.
+#
+# Se deja afuera para que la visibilidad del repo no pueda exponerlo: un repo
+# privado se vuelve público con un clic, y sacar un archivo del historial después
+# es trabajo. Decidido el 18/8/2026.
+#
+# CONSECUENCIA A TENER PRESENTE: es el único archivo del proyecto sin respaldo ni
+# historial. Si se pierde el disco, se pierde entero.
+CONTEXTO.md
+
+# ─── Derivados de este proyecto ───────────────────────────────────────────────
+# genesis-paper.html SÍ se versiona: es el entregable que se le pasa a alguien.
+# Lo que no se versiona es la copia de seguridad previa al render — para eso
+# está el historial de git, que es justamente lo que este repo viene a dar.
+genesis-paper.html.bak
+
+# El paquete para el telefono: se regenera con herramientas/empaquetar_vm.py
+genesis/vm-telefono.tar.gz
+
+# ─── Borradores de comunicación (no publicar) ─────────────────────────────────
+# Contienen notas de estrategia propias, no forman parte del diseño.
+POST-ETHRESEARCH.md
+RESPUESTA-EIP-8368.md
+APLICACION-ESP.md

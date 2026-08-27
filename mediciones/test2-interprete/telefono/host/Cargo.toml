@@ -1,0 +1,20 @@
+[package]
+name = "host"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+# Por defecto solo interprete: compila en minutos en Termux.
+default = []
+# Agrega wasmtime (Cranelift JIT + Pulley). Pesado de compilar en el telefono.
+jit = ["dep:wasmtime"]
+
+[dependencies]
+pqcore = { path = "../pqcore" }
+wasmi = "2.0.0-beta.10"
+wasmtime = { version = "47", default-features = false, features = ["cranelift", "runtime", "std", "pulley"], optional = true }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

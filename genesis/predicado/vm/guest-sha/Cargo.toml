@@ -1,0 +1,15 @@
+[package]
+name = "guest-sha"
+version = "0.1.0"
+edition = "2021"
+
+# Sin dependencias: el SHA-256 esta escrito a mano acá abajo. Es a proposito — lo que
+# se mide es el costo del algoritmo en la maquina, y una implementacion de terceros
+# metaria sus propias decisiones de tamano y de desenrollado en el medio.
+[dependencies]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

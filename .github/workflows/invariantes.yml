@@ -1,0 +1,25 @@
+# Fase 0 del ROADMAP: las invariantes se ejecutan en cada commit.
+#
+# Vive acá y no en genesis/ porque GitHub sólo lee .github/workflows/ en la raíz
+# del repositorio. Es lo unico del motor que queda fuera de esa carpeta.
+name: invariantes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: I1-I5 y los criterios de aprobado de cada fase
+        working-directory: genesis
+        run: python verificar.py
+      - name: la prueba de las pruebas
+        working-directory: genesis
+        run: python herramientas/mutar.py

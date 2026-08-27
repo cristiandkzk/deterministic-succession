@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discussions
+    url: https://github.com/cristiandkzk/deterministic-succession/discussions
+    about: "Ideas abiertas, encuadres alternativos, y todo lo que no cierra como issue. Open-ended ideas and alternative framings."
+  - name: "Donde pegar primero / Where to hit first"
+    url: https://github.com/cristiandkzk/deterministic-succession/blob/main/docs/problemas-abiertos.md
+    about: "Los ocho ataques de mayor valor, en orden de cuanto costaria descubrirlos tarde."

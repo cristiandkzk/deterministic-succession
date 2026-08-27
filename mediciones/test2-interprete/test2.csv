@@ -1,0 +1,28 @@
+# Test 2 — presupuesto del interprete
+# host: aarch64-android  wasm: 228573 B  rv32im-elf: 275492 B  rv64imac-elf: 237808 B
+
+engine,level,mode,ns_per_verify,verifies_per_sec,slowdown_vs_native,compile_ms,steps_per_verify
+native,ML-DSA-44,decode+verify,112694,8874,1.00,-,-
+wasmi,ML-DSA-44,decode+verify,5993645,167,53.19,2.0,-
+rv32im,ML-DSA-44,decode+verify,10422101,96,92.48,1.1,3339364
+rv64imac,ML-DSA-44,decode+verify,11561289,86,102.59,2.3,1975223
+native,ML-DSA-44,verify_only,53021,18860,1.00,-,-
+wasmi,ML-DSA-44,verify_only,3775867,265,71.21,1.6,-
+rv32im,ML-DSA-44,verify_only,3563078,281,67.20,1.1,1126796
+rv64imac,ML-DSA-44,verify_only,5045343,198,95.16,2.4,849355
+native,ML-DSA-65,decode+verify,179977,5556,1.00,-,-
+wasmi,ML-DSA-65,decode+verify,9115880,110,50.65,1.5,-
+rv32im,ML-DSA-65,decode+verify,16749730,60,93.07,1.1,5379218
+rv64imac,ML-DSA-65,decode+verify,18085406,55,100.49,2.3,3090801
+native,ML-DSA-65,verify_only,76203,13123,1.00,-,-
+wasmi,ML-DSA-65,verify_only,5485078,182,71.98,1.5,-
+rv32im,ML-DSA-65,verify_only,21625422,46,283.79,2.3,1472591
+rv64imac,ML-DSA-65,verify_only,22413932,45,294.14,4.8,1137238
+native,ML-DSA-87,decode+verify,1229444,813,1.00,-,-
+wasmi,ML-DSA-87,decode+verify,15660010,64,12.74,5.0,-
+rv32im,ML-DSA-87,decode+verify,28322039,35,23.04,0.8,9111691
+rv64imac,ML-DSA-87,decode+verify,29923982,33,24.34,2.3,5116714
+native,ML-DSA-87,verify_only,108751,9195,1.00,-,-
+wasmi,ML-DSA-87,verify_only,8352845,120,76.81,1.5,-
+rv32im,ML-DSA-87,verify_only,7082993,141,65.13,1.1,2219176
+rv64imac,ML-DSA-87,verify_only,10376869,96,95.42,2.0,1728988

@@ -1,0 +1,17 @@
+# Vectores de C3 — reproducibilidad entre arquitecturas.
+#
+# Generados en x86-64 con `cargo run --release --bin vectores`. Para cerrar C3 hay
+# que correr `cargo run --release --bin vectores verificar` en aarch64 (Termux) y
+# que los siete den identicos. No hay tolerancia: si dos nodos cuentan distinto, la
+# impugnacion no tiene resultado.
+#
+# columnas: veredicto canonico (5 bytes en hex), pasos, paginas tocadas, huella
+# FNV-1a de los 32 registros mas 4 KiB de memoria.
+vector,veredicto,pasos,paginas,huella
+division-bordes,0100001000,21,1,6ac37400e55ea49d
+isa-revuelto-200k,0100001000,192112,1,193a62b661199225
+mldsa44-una-verificacion,0001000000,3339442,26,535bee09c335ad3f
+techo-paginas,0400000000,24,7,fddd842553bf3935
+techo-pasos,0200000000,4242,0,3937141309162d25
+trampa-lectura,0300000000,2,0,f1f615a10788e2d9
+trampa-pc,0301000000,1,0,3937141309162d25

@@ -1,0 +1,15 @@
+[package]
+name = "vm"
+version = "0.1.0"
+edition = "2021"
+
+# Sin dependencias, a proposito. Esta es la pieza que I1 congela: cada crate que
+# entre acá es codigo que un dia se actualiza, y un cambio de semantica entre dos
+# versiones de una dependencia es una bifurcacion de consenso que nadie eligio.
+[dependencies]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

@@ -1,0 +1,41 @@
+name: "Pregunta / Question"
+description: "Algo no se entiende, falta, o dos documentos se contradicen"
+title: "[pregunta] "
+labels: ["pregunta"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Si algo está contestado en el paper y no se ve en el resumen, eso es un defecto del
+        resumen y quiero saberlo.** Lo mismo si dos documentos se contradicen.
+
+        *If something is answered in the paper but invisible in the summary, that's a defect
+        in the summary and I want to know. Same if two documents contradict each other.*
+
+  - type: textarea
+    id: pregunta
+    attributes:
+      label: "La pregunta · The question"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: "De qué tipo es · What kind"
+      options:
+        - "No entiendo cómo funciona una pieza"
+        - "Creo que falta algo que el diseño necesita"
+        - "Dos documentos se contradicen"
+        - "Un número no me cierra"
+        - "Otra"
+    validations:
+      required: true
+
+  - type: textarea
+    id: donde
+    attributes:
+      label: "Dónde · Where"
+      description: "Sección del resumen o del paper, o archivo de mediciones."
+    validations:
+      required: false

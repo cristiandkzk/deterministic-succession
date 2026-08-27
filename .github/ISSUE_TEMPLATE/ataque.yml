@@ -1,0 +1,71 @@
+name: "Ataque / Attack"
+description: "Encontraste algo que se rompe · You found something that breaks"
+title: "[ataque] "
+labels: ["ataque"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Un ataque que las cinco invariantes respeta es un ataque contra el diseño; uno que
+        las viola es otro diseño.** Las dos cosas sirven — decime cuál estás haciendo.
+
+        Antes de seguir, mirá el [índice de lo que ya
+        murió](../blob/main/docs/bitacora.md#índice-lo-que-ya-murió): si tu propuesta está
+        ahí, contestá la refutación existente en vez de repetir la propuesta.
+
+        *An attack that respects the five invariants is an attack on the design; one that
+        violates them is a different design. Both are useful — say which one you're doing.*
+
+  - type: textarea
+    id: ataque
+    attributes:
+      label: "El ataque · The attack"
+      description: "Qué se rompe, y cómo. Sé concreto: entradas, estado, secuencia."
+      placeholder: "Un actor que controla X puede..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: invariante
+    attributes:
+      label: "¿Contra qué invariante va? · Which invariant does it target?"
+      description: "I1 interprete inmutable · I2 trigger solo desde el estado · I3 estado integro · I4 conmutacion atomica · I5 el que no soporta sigue en la anterior"
+      multiple: true
+      options:
+        - "I1 — el intérprete vive en Genesis y no cambia nunca"
+        - "I2 — el trigger se computa sólo desde el estado"
+        - "I3 — el estado se conserva íntegro a través de la transición"
+        - "I4 — la conmutación es atómica, en un bloque conocido de antemano"
+        - "I5 — quien no soporta la generación nueva sigue en la anterior"
+        - "Ninguna: el ataque las respeta a las cinco"
+        - "Es otro diseño: propongo cambiar una invariante"
+    validations:
+      required: true
+
+  - type: textarea
+    id: falsable
+    attributes:
+      label: "Qué lo confirmaría o lo mataría · What would confirm or kill it"
+      description: |
+        La parte que hace que esto se pueda cerrar en vez de discutirse para siempre.
+        Una medición, una cuenta, un caso real, un número que habría que ver.
+      placeholder: "Si al correr X sobre Y el resultado es mayor que Z, el ataque se sostiene."
+    validations:
+      required: true
+
+  - type: textarea
+    id: contra
+    attributes:
+      label: "Dónde lo leíste · Where in the material"
+      description: "Sección del resumen o del paper, o archivo de mediciones. Si el resumen y el paper se contradicen, decilo — eso es un defecto y quiero saberlo."
+    validations:
+      required: false
+
+  - type: textarea
+    id: datos
+    attributes:
+      label: "Datos, si corriste algo · Data, if you ran something"
+      description: "Salida cruda, qué máquina, qué más estaba corriendo. Si es una medición de rendimiento: la peor de varias corridas, no la media."
+      render: text
+    validations:
+      required: false

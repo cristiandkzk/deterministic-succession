@@ -1,0 +1,41 @@
+# Test 2 — presupuesto del interprete
+# host: aarch64-android  wasm: 228573 B  rv32im-elf: 275492 B  rv64imac-elf: 237808 B
+# filtro: nivel=todos modo=todos pausa=45s
+
+engine,level,mode,ns_per_verify,verifies_per_sec,slowdown_vs_native,compile_ms,steps_per_verify
+native,ML-DSA-44,decode+verify,111324,8983,1.00,-,-
+wasmtime-cranelift,ML-DSA-44,decode+verify,1916436,522,17.21,1327.7,-
+wasmtime-pulley,ML-DSA-44,decode+verify,40888387,24,367.29,1447.4,-
+wasmi,ML-DSA-44,decode+verify,5967076,168,53.60,7.3,-
+rv32im,ML-DSA-44,decode+verify,50153573,20,450.52,1.0,3339364
+rv64imac,ML-DSA-44,decode+verify,36006848,28,323.44,5.2,1975223
+native,ML-DSA-44,verify_only,52483,19054,1.00,-,-
+wasmtime-cranelift,ML-DSA-44,verify_only,487881,2050,9.30,335.6,-
+wasmtime-pulley,ML-DSA-44,verify_only,24890970,40,474.27,1446.9,-
+wasmi,ML-DSA-44,verify_only,3762150,266,71.68,1.6,-
+rv32im,ML-DSA-44,verify_only,3579260,279,68.20,1.0,1126796
+rv64imac,ML-DSA-44,verify_only,5586037,179,106.44,2.1,849355
+native,ML-DSA-65,decode+verify,696761,1435,1.00,-,-
+wasmtime-cranelift,ML-DSA-65,decode+verify,2910418,344,4.18,1314.4,-
+wasmtime-pulley,ML-DSA-65,decode+verify,15228070,66,21.86,1442.5,-
+wasmi,ML-DSA-65,decode+verify,23678413,42,33.98,5.0,-
+rv32im,ML-DSA-65,decode+verify,80783487,12,115.94,2.6,5379218
+rv64imac,ML-DSA-65,decode+verify,56151608,18,80.59,4.8,3090801
+native,ML-DSA-65,verify_only,75526,13241,1.00,-,-
+wasmtime-cranelift,ML-DSA-65,verify_only,1776200,563,23.52,1355.0,-
+wasmtime-pulley,ML-DSA-65,verify_only,36343021,28,481.20,1448.2,-
+wasmi,ML-DSA-65,verify_only,13779201,73,182.44,1.6,-
+rv32im,ML-DSA-65,verify_only,22670388,44,300.17,2.5,1472591
+rv64imac,ML-DSA-65,verify_only,21128911,47,279.76,4.9,1137238
+native,ML-DSA-87,decode+verify,1176528,850,1.00,-,-
+wasmtime-cranelift,ML-DSA-87,decode+verify,4494948,222,3.82,1310.0,-
+wasmtime-pulley,ML-DSA-87,decode+verify,98107035,10,83.39,1449.2,-
+wasmi,ML-DSA-87,decode+verify,36820746,27,31.30,5.0,-
+rv32im,ML-DSA-87,decode+verify,137340709,7,116.73,2.5,9111691
+rv64imac,ML-DSA-87,decode+verify,93183527,11,79.20,4.9,5116714
+native,ML-DSA-87,verify_only,429808,2327,1.00,-,-
+wasmtime-cranelift,ML-DSA-87,verify_only,2692862,371,6.27,1320.7,-
+wasmtime-pulley,ML-DSA-87,verify_only,55875479,18,130.00,1436.4,-
+wasmi,ML-DSA-87,verify_only,21063001,47,49.01,5.0,-
+rv32im,ML-DSA-87,verify_only,35698310,28,83.06,2.4,2219176
+rv64imac,ML-DSA-87,verify_only,32984588,30,76.74,4.8,1728988

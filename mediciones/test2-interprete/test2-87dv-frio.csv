@@ -1,0 +1,11 @@
+# Test 2 — presupuesto del interprete
+# host: aarch64-android  wasm: 228573 B  rv32im-elf: 275492 B  rv64imac-elf: 237808 B
+# filtro: nivel=87 modo=decode+verify pausa=0s
+
+engine,level,mode,ns_per_verify,verifies_per_sec,slowdown_vs_native,compile_ms,steps_per_verify
+native,ML-DSA-87,decode+verify,306884,3259,1.00,-,-
+wasmtime-cranelift,ML-DSA-87,decode+verify,905159,1105,2.95,335.5,-
+wasmtime-pulley,ML-DSA-87,decode+verify,23644084,42,77.05,368.5,-
+wasmi,ML-DSA-87,decode+verify,14164068,71,46.15,2.0,-
+rv32im,ML-DSA-87,decode+verify,28492358,35,92.84,1.2,9111691
+rv64imac,ML-DSA-87,decode+verify,33093270,30,107.84,2.5,5116714

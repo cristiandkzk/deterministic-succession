@@ -1,0 +1,27 @@
+# Test 2 — presupuesto del interprete
+# host: x86_64-windows  wasm: 228573 B  rv32im-elf: 275492 B  rv64imac-elf: 237808 B
+engine,level,mode,ns_per_verify,verifies_per_sec,slowdown_vs_native,compile_ms,steps_per_verify
+native,ML-DSA-44,decode+verify,109052,9170,1.00,-,-
+wasmi,ML-DSA-44,decode+verify,2985935,335,27.38,1.4,-
+rv32im,ML-DSA-44,decode+verify,12302316,81,112.81,1.0,3339364
+rv64imac,ML-DSA-44,decode+verify,7573499,132,69.45,1.2,1975223
+native,ML-DSA-44,verify_only,43827,22817,1.00,-,-
+wasmi,ML-DSA-44,verify_only,2020444,495,46.10,1.3,-
+rv32im,ML-DSA-44,verify_only,3489285,287,79.62,0.7,1126796
+rv64imac,ML-DSA-44,verify_only,3089727,324,70.50,1.1,849355
+native,ML-DSA-65,decode+verify,177035,5649,1.00,-,-
+wasmi,ML-DSA-65,decode+verify,4611786,217,26.05,1.3,-
+rv32im,ML-DSA-65,decode+verify,20387678,49,115.16,0.7,5379218
+rv64imac,ML-DSA-65,decode+verify,12431518,80,70.22,1.0,3090801
+native,ML-DSA-65,verify_only,62155,16089,1.00,-,-
+wasmi,ML-DSA-65,verify_only,2800659,357,45.06,1.1,-
+rv32im,ML-DSA-65,verify_only,4551502,220,73.23,0.7,1472591
+rv64imac,ML-DSA-65,verify_only,3913054,256,62.96,1.0,1137238
+native,ML-DSA-87,decode+verify,290836,3438,1.00,-,-
+wasmi,ML-DSA-87,decode+verify,7098218,141,24.41,1.2,-
+rv32im,ML-DSA-87,decode+verify,34910966,29,120.04,0.7,9111691
+rv64imac,ML-DSA-87,decode+verify,21232788,47,73.01,1.0,5116714
+native,ML-DSA-87,verify_only,89282,11200,1.00,-,-
+wasmi,ML-DSA-87,verify_only,4349235,230,48.71,1.1,-
+rv32im,ML-DSA-87,verify_only,6811803,147,76.30,0.7,2219176
+rv64imac,ML-DSA-87,verify_only,6161866,162,69.02,1.0,1728988
