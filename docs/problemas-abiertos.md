@@ -176,8 +176,25 @@ precio es el punto fijo del lazo, no un insumo.** Si eso aplica acá, *"ninguna 
 dos lados sin leer un precio"* estaría mal planteado — no hace falta **conocer** el precio, hace
 falta un lazo cuyo punto fijo **sea** el precio.
 
-> **Sin verificar.** Es una hipótesis, no un cierre: exige leer EIP-7999 entero contra este
-> problema. Es lo próximo que hay que hacer acá, y si cierra, este problema abierto se cae.
+**Medido el 28/8/2026 — y la hipótesis es falsa como estaba escrita.**
+Ver [`mediciones/convergencia-tasa/`](../mediciones/convergencia-tasa/RESULTADOS.md).
+
+El operador de exceso **no contrae solo**: es un acumulador, y con demanda exógena dos niveles
+iniciales mantienen su diferencia **exactamente**, `c = 1`. La convergencia de 1559/4844/7999 no
+está en la regla — está en que la demanda responde al precio. Con elasticidad constante `e`:
+
+> `c(e) = |1 − e · target / k|`, medido contra el analítico con 0,00% de error, y el lazo
+> contrae **si y sólo si** `0 < e < 2k/target = 16,98`.
+
+**Y el número que decide:** con `L_MAX_EPOCAS = 25` —la vida máxima comprable— el nivel inicial
+se borra dentro de la vida de un depósito sólo si la elasticidad de la demanda de guardado
+supera **2,05**.
+
+Así que el problema **no se cierra: se reubica**, que es exactamente la rama que
+[`CRITERIOS.md`](../mediciones/convergencia-tasa/CRITERIOS.md) declaró de antemano. Pasa de
+*"Genesis tiene que conocer el precio"* —irresoluble por construcción— a **"la demanda de
+guardado tiene elasticidad mayor a 2,05 en 25 épocas"**, que es una pregunta empírica sobre un
+mercado. Sigue sin ser una cuenta que la cadena pueda hacer, pero ahora alguien la puede medir.
 
 ### 3 · La ventana de aviso `Δ`: una unidad y una magnitud
 

@@ -176,9 +176,26 @@ price: the base fee starts anywhere above `MIN_BASE_FEE_PER_GAS = 1` and the loo
 crosses the two sides without reading a price"* is stated wrongly — you don't need to **know**
 the price, you need a loop whose fixed point **is** the price.
 
-> **Unverified.** This is a hypothesis, not a closure: it requires reading EIP-7999 in full
-> against this problem. That is the next thing to do here, and if it holds, this open problem
-> goes away.
+**Measured 2026-08-28 — and the hypothesis is false as stated.**
+See [`mediciones/convergencia-tasa/`](../mediciones/convergencia-tasa/RESULTADOS.md).
+
+The excess operator **does not contract on its own**: it is an accumulator, and under exogenous
+demand two initial levels keep their difference **exactly**, `c = 1`. The convergence of
+1559/4844/7999 is not in the rule — it is in demand responding to price. With constant
+elasticity `e`:
+
+> `c(e) = |1 − e · target / k|`, matched against the analytic value to 0.00% error, and the loop
+> contracts **if and only if** `0 < e < 2k/target = 16.98`.
+
+**And the number that decides it:** with `L_MAX_EPOCAS = 25` — the maximum purchasable lifetime
+— the initial level washes out within the life of one deposit only if the elasticity of storage
+demand exceeds **2.05**.
+
+So the problem **does not close: it relocates**, which is exactly the branch
+[`CRITERIOS.md`](../mediciones/convergencia-tasa/CRITERIOS.md) declared in advance. It goes from
+*"genesis must know the price"* — unsolvable by construction — to **"storage demand has
+elasticity above 2.05 over 25 epochs"**, an empirical question about a market. Still not a
+calculation the chain can perform, but now one somebody can measure.
 
 ### 3 · The notice window `Δ`: a unit and a magnitude
 
