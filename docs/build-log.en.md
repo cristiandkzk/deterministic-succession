@@ -25,6 +25,7 @@ It is in chronological order, and each stretch says what it corrected in the pap
 - [3 · Construction: six phases, and what reading had not corrected](#3--construction-six-phases-and-what-reading-had-not-corrected)
 - [4 · The units audit: what passes underneath all five](#4--the-units-audit-what-passes-underneath-all-five)
 - [5 · Method lessons that hold outside this project](#5--method-lessons-that-hold-outside-this-project)
+- [6 · The first external review](#6--the-first-external-review)
 - [Index: what already died](#index-what-already-died)
 
 ---
@@ -652,6 +653,75 @@ the signal to rewrite them, not a bug.
 
 ---
 
+## 6 · The first external review
+
+**This is the first entry in this log not written by the author of the design.**
+
+The repository went public on 2026-08-27. Twelve hours later, a question on
+[`ethereum/EIPs#12107`](https://github.com/ethereum/EIPs/pull/12107) — why `CPSB` is
+recalibrated through a new EIP rather than derived from the active gas limit — got an answer
+from **Maria Silva**, author of EIP-8037. It brought three things, and none of them was written
+down here.
+
+### 6.1 · The proposal had already been considered, and discarded
+
+CPSB varying with the gas limit **was the original design of EIP-8037**. It was dropped for two
+reasons — and both are boundaries this design had not written down.
+
+### 6.2 · "A value that is not protocol mandated" — I2, confirmed from outside
+
+The first reason: the gas limit **is chain state, but the protocol does not derive it** —
+validators choose it, block by block — and hanging a consensus cost off it breaks testing in
+EELS, which expects fixed gas costs.
+
+**That is I2, and it arrived from outside.** The 2026-08-19 reformulation says that *computable
+from state is not enough*: what matters is **who can produce the fact and what it costs them**.
+The counterexample that motivated it was *"when address X receives 1 wei"*. The gas limit is the
+same object — computable state, with an owner — and the EIP process rejected it for that reason,
+without having seen this invariant.
+
+**It is the first external confirmation of a piece of the frame.** Worth less than a refutation,
+worth more than any of the in-house ones: it was not run by the person who wrote the design.
+
+### 6.3 · The second reason is about integration, and it touches `Δ`
+
+*"Contracts that were working before at a given `CPSB` would stop working at a higher `CPSB`."*
+
+That is exactly what §10.1 says `Δ` buys — and what the [units
+audit](#4--the-units-audit-what-passes-underneath-all-five) found `Δ` does **not** buy at current
+values, with its 6.4 minutes.
+
+What matters is what Ethereum did with the same problem in front of it: **it did not pick a
+longer notice window, it picked not to move the cost.** That is an exit this design never
+considered, because it assumes the parameter moves and that what gets negotiated is the notice.
+Recorded against [open problem 3](open-problems.en.md#3--the-notice-window-δ-a-unit-and-a-magnitude).
+
+### 6.4 · The pointer, which is the most valuable of the three
+
+The end game, per the answer, is **EIP-7999**: have **the base fee vary to hold the target state
+growth rate** instead of varying the cost.
+
+That lands on [open problem 2](open-problems.en.md#2--the-permanence-rate-rule-and-the-level-it-starts-from),
+where it is developed. In one line: **there the control law is complete and the initial level is
+not**, exactly as here — and EIP-1559 suggests the initial level may not be needed at all,
+because the price is the loop's fixed point rather than an input. If that holds, open problem 2
+goes away.
+
+### 6.5 · What it cost, and what shape the post that produced it had
+
+Worth recording because it cuts against the reflex:
+
+- the post **was not about the design**. It was a narrow question about someone else's EIP;
+- the first thing it said about its own work was **which two of the three measurements had
+  failed**;
+- the repository link was **in parentheses, at the end**, subordinate;
+- **nobody read the paper.** The answer came for the question.
+
+**What earned external review was not publishing the design: it was being useful to someone
+else on their own problem.** Twelve hours, against eighteen months of having none.
+
+---
+
 ## Index: what already died
 
 Before proposing something on this list, look at where it died. **These aren't forbidden: they
@@ -682,3 +752,4 @@ already have a written refutation, and a proposal that doesn't answer it doesn't
 | weight instructions per class, gas-style | [3.4](#34--phase-4--the-machine-and-the-ceiling-that-overpromised-by-23) |
 | the page budget as a constant | [3.5](#35--the-page-ceiling-wall--the-same-move-a-second-time) |
 | index the rate to occupancy with no cap on purchasable lifetime | [2.5](#25--a-control-law-that-seemed-to-close-and-didnt) |
+| derive `CPSB` from the active gas limit (proposed outside, not here) | [6.1](#61--the-proposal-had-already-been-considered-and-discarded) — the gas limit is not protocol mandated |

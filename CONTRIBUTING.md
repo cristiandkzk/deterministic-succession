@@ -15,7 +15,7 @@ el tipo de evidencia que no vale. Vos sos la parte que falta.
 **Un ataque útil dice contra qué invariante va, y qué observación lo confirmaría o lo
 mataría.**
 
-Las [cinco invariantes](README.md#las-cinco-invariantes) son el marco duro:
+Las [cinco invariantes](docs/paper.md#4-invariantes-de-diseño) son el marco duro:
 
 > **Un ataque que las respeta es un ataque contra el diseño. Uno que las viola es otro
 > diseño.**

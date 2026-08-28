@@ -148,6 +148,38 @@ twice:**
 That is where denominating the floor in storage epochs rather than token units came from — with
 that, **what stays open is one number and not two**.
 
+**Update, 2026-08-28 — the first external answer, and what it does to this boundary.**
+
+Asked on [`ethereum/EIPs#12107`](https://github.com/ethereum/EIPs/pull/12107) why `CPSB` is
+recalibrated through a new EIP rather than derived from the active gas limit, Maria Silva —
+author of EIP-8037 — pointed at the design they consider the end game for this problem:
+
+> **EIP-7999**, where **the base fee varies to hold the target state growth rate** instead of
+> varying the gas cost itself.
+
+EIP-7999 — *Unified multidimensional fee market*, by Anders Elowsson, Vitalik Buterin and Maria
+Silva — **specifies the whole control law**: an exponential on excess relative to target, with
+`BASE_FEE_UPDATE_FRACTION` **derived** from `GAS_NORMALIZATION_FACTOR / (2·ln(1.125))` rather
+than picked. And it **does not specify the initial level** of the base fees at activation.
+
+So there the problem splits exactly as it does here: **the form solved, the level not.** Two
+consequences:
+
+- **the form can be borrowed**, with the constant derived rather than chosen — which is
+  precisely the move that closed the step ceiling twice;
+- **the initial level is unsolved in Ethereum too**, with those three authors on it. That
+  demotes it from a hole in this design to **a boundary of the field**.
+
+**And it raises a doubt about how the boundary above is stated.** EIP-1559 does not read a
+price: the base fee starts anywhere above `MIN_BASE_FEE_PER_GAS = 1` and the loop converges.
+**The price is the loop's fixed point, not an input.** If that carries over, *"no calculation
+crosses the two sides without reading a price"* is stated wrongly — you don't need to **know**
+the price, you need a loop whose fixed point **is** the price.
+
+> **Unverified.** This is a hypothesis, not a closure: it requires reading EIP-7999 in full
+> against this problem. That is the next thing to do here, and if it holds, this open problem
+> goes away.
+
 ### 3 · The notice window `Δ`: a unit and a magnitude
 
 Found by the units audit, and **these are two distinct problems worth not conflating**.

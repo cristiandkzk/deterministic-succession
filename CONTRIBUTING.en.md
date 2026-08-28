@@ -15,7 +15,7 @@ kind of evidence that doesn't count. You are the missing part.
 **A useful attack says which invariant it targets, and what observation would confirm or kill
 it.**
 
-The [five invariants](README.en.md#the-five-invariants) are the hard frame:
+The [five invariants](docs/roadmap.en.md#1-glossary-the-words-to-have-before-opening-a-file) are the hard frame:
 
 > **An attack that respects them is an attack on the design. One that violates them is a different
 > design.**

@@ -25,6 +25,7 @@ Está en orden cronológico, y cada tramo dice qué corrigió del paper.
 - [3 · La construcción: seis fases, y lo que leer no había corregido](#3--la-construcción-seis-fases-y-lo-que-leer-no-había-corregido)
 - [4 · La auditoría de unidades: lo que pasa por debajo de las cinco](#4--la-auditoría-de-unidades-lo-que-pasa-por-debajo-de-las-cinco)
 - [5 · Las lecciones de método, que valen fuera de este proyecto](#5--las-lecciones-de-método-que-valen-fuera-de-este-proyecto)
+- [6 · La primera revisión externa](#6--la-primera-revisión-externa)
 - [Índice: lo que ya murió](#índice-lo-que-ya-murió)
 
 ---
@@ -676,6 +677,74 @@ es la señal de reescribirlas, no un fallo.
 
 ---
 
+## 6 · La primera revisión externa
+
+**Es la primera entrada de esta bitácora que no escribió el autor del diseño.**
+
+El repositorio se hizo público el 27/8/2026. Doce horas después, una pregunta en
+[`ethereum/EIPs#12107`](https://github.com/ethereum/EIPs/pull/12107) —por qué `CPSB` se
+recalibra con un EIP nuevo en vez de derivarse del gas limit activo— recibió respuesta de
+**Maria Silva**, autora de EIP-8037. Trajo tres cosas, y ninguna estaba anotada acá.
+
+### 6.1 · La propuesta ya se había pensado, y se descartó
+
+CPSB variable con el gas limit **fue el diseño original de EIP-8037**. Se descartó por dos
+razones — y las dos son fronteras que este diseño no tenía escritas.
+
+### 6.2 · «Un valor que no está mandado por el protocolo» — I2, confirmada desde afuera
+
+La primera razón: el gas limit **es estado de la cadena, pero no lo deriva el protocolo** —lo
+eligen los validadores, bloque a bloque—, y colgar un costo de consenso de él rompe el testing
+en EELS, que espera costos de gas fijos.
+
+**Eso es I2, y llegó de afuera.** La reformulación del 19/8 dice que *computable desde el estado
+no alcanza*: lo que importa es **quién puede producir el hecho y qué le cuesta**. El
+contraejemplo que la motivó fue *"cuando la dirección X reciba 1 wei"*. El gas limit es el mismo
+objeto —estado computable, con dueño— y el proceso de EIPs lo rechazó por esa razón, sin haber
+visto esta invariante.
+
+**Es la primera confirmación externa de una pieza del marco.** Vale menos que una refutación,
+pero vale más que cualquiera de las propias: no la corrió quien escribió el diseño.
+
+### 6.3 · La segunda razón es de integración, y toca `Δ`
+
+*"Contratos que funcionaban con un `CPSB` dado dejarían de funcionar con uno más alto."*
+
+Es exactamente lo que §10.1 dice que compra `Δ` — y lo que la [auditoría de
+unidades](#4--la-auditoría-de-unidades-lo-que-pasa-por-debajo-de-las-cinco) encontró que `Δ`
+**no** compra a los valores actuales, con sus 6,4 minutos.
+
+Lo que importa es qué hizo Ethereum con el mismo problema enfrente: **no eligió una ventana de
+aviso más larga, eligió no mover el costo.** Es una salida que este diseño nunca consideró,
+porque da por sentado que el parámetro se mueve y que lo que se negocia es el aviso. Queda
+anotada contra el [problema abierto 3](problemas-abiertos.md#3--la-ventana-de-aviso-δ-una-unidad-y-una-magnitud).
+
+### 6.4 · El pointer, que es lo más valioso de los tres
+
+El destino final, según la respuesta, es **EIP-7999**: que **el base fee varíe para sostener la
+tasa objetivo de crecimiento del estado**, en vez de variar el costo.
+
+Eso cae encima del [problema abierto 2](problemas-abiertos.md#2--la-regla-de-la-tasa-de-permanencia-y-el-nivel-del-que-parte),
+donde está desarrollado. En una línea: **allá la ley de control está entera y el nivel inicial
+no**, igual que acá — y EIP-1559 sugiere que el nivel inicial podría no hacer falta, porque el
+precio es el punto fijo del lazo y no un insumo. Si eso se confirma, el problema abierto 2 se
+cae.
+
+### 6.5 · Lo que costó, y de qué forma era el post que lo produjo
+
+Vale anotarlo porque contradice el reflejo:
+
+- el post **no hablaba del diseño**. Era una pregunta angosta sobre el EIP de otra persona;
+- lo primero que decía del trabajo propio era **cuáles dos de las tres mediciones habían
+  fallado**;
+- el link al repositorio iba **entre paréntesis, al final**, subordinado;
+- **nadie leyó el paper.** La respuesta vino por la pregunta.
+
+**Lo que consiguió revisión externa no fue publicar el diseño: fue serle útil a otro en su
+propio problema.** Doce horas, contra dieciocho meses de no tener ninguna.
+
+---
+
 ## Índice: lo que ya murió
 
 Antes de proponer algo de esta lista, mirá dónde murió. **No es que estén prohibidas: es
@@ -706,3 +775,4 @@ que ya tienen una refutación escrita, y una propuesta que no la contesta no ava
 | pesar instrucciones por clase, estilo gas | [3.4](#34--fase-4--la-máquina-y-el-techo-que-prometía-de-más-por-23) |
 | el presupuesto de páginas como constante | [3.5](#35--el-muro-del-techo-de-páginas--el-mismo-movimiento-por-segunda-vez) |
 | indexar la tasa a la ocupación sin tope a la vida comprable | [2.5](#25--una-ley-de-control-que-parecía-cerrar-y-no-cerraba) |
+| derivar `CPSB` del gas limit activo (propuesto afuera, no acá) | [6.1](#61--la-propuesta-ya-se-había-pensado-y-se-descartó) — el gas limit no está mandado por el protocolo |

@@ -147,6 +147,38 @@ veces:**
 De ahí salió denominar el piso en épocas de guardado en vez de en unidades del token — con eso
 **lo que queda abierto es un solo número y no dos**.
 
+**Actualización del 28/8/2026 — la primera respuesta externa, y lo que le hace a esta
+frontera.**
+
+Al preguntar en [`ethereum/EIPs#12107`](https://github.com/ethereum/EIPs/pull/12107) por qué
+`CPSB` se recalibra con un EIP nuevo en vez de derivarse del gas limit activo, Maria Silva
+—autora de EIP-8037— apuntó al diseño que consideran el destino final del problema:
+
+> **EIP-7999**, donde **el base fee varía para sostener la tasa objetivo de crecimiento del
+> estado**, en vez de variar el costo de gas.
+
+EIP-7999 —*Unified multidimensional fee market*, de Anders Elowsson, Vitalik Buterin y Maria
+Silva— **especifica la ley de control entera**: exponencial sobre el exceso respecto del
+target, con `BASE_FEE_UPDATE_FRACTION` **derivada** de `GAS_NORMALIZATION_FACTOR / (2·ln(1,125))`
+y no elegida. Y **no especifica el nivel inicial** de los base fees al activar.
+
+O sea que allá el problema se parte igual que acá: **la forma resuelta, el nivel no.** Dos
+consecuencias:
+
+- **la forma se puede tomar prestada**, y con la constante derivada en vez de elegida — que es
+  exactamente la jugada que cerró el techo de pasos dos veces;
+- **el nivel inicial tampoco está resuelto en Ethereum**, con esos tres autores. Eso lo baja de
+  agujero de este diseño a **frontera del campo**.
+
+**Y abre una duda sobre cómo está planteada la frontera de arriba.** EIP-1559 no lee un precio:
+el base fee arranca donde sea por encima de `MIN_BASE_FEE_PER_GAS = 1` y el lazo converge. **El
+precio es el punto fijo del lazo, no un insumo.** Si eso aplica acá, *"ninguna cuenta cruza los
+dos lados sin leer un precio"* estaría mal planteado — no hace falta **conocer** el precio, hace
+falta un lazo cuyo punto fijo **sea** el precio.
+
+> **Sin verificar.** Es una hipótesis, no un cierre: exige leer EIP-7999 entero contra este
+> problema. Es lo próximo que hay que hacer acá, y si cierra, este problema abierto se cae.
+
 ### 3 · La ventana de aviso `Δ`: una unidad y una magnitud
 
 Lo encontró la auditoría de unidades, y **son dos problemas distintos que conviene no
