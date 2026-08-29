@@ -91,7 +91,7 @@ pub fn jal(rd: u32, imm: i32) -> u32 {
 /// `test2-interprete/`. Es la carga de trabajo real de C1 y la prueba de
 /// regresion de que la maquina endurecida no cambio ni una unidad la semantica.
 pub const GUEST_RV: &[u8] =
-    include_bytes!("../../../../test2-interprete/telefono/guest-rv/guest.elf");
+    include_bytes!("../../../../mediciones/test2-interprete/telefono/guest-rv/guest.elf");
 
 /// Un SHA-256 escrito a mano y compilado a RV32IM (`guest-sha/`).
 ///
