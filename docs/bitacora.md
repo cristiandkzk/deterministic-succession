@@ -726,9 +726,15 @@ tasa objetivo de crecimiento del estado**, en vez de variar el costo.
 
 Eso cae encima del [problema abierto 2](problemas-abiertos.md#2--la-regla-de-la-tasa-de-permanencia-y-el-nivel-del-que-parte),
 donde está desarrollado. En una línea: **allá la ley de control está entera y el nivel inicial
-no**, igual que acá — y EIP-1559 sugiere que el nivel inicial podría no hacer falta, porque el
-precio es el punto fijo del lazo y no un insumo. Si eso se confirma, el problema abierto 2 se
-cae.
+no**, igual que acá — y EIP-1559 sugería que el nivel inicial podría no hacer falta, porque el
+precio es el punto fijo del lazo y no un insumo.
+
+**Se midió el 28/8/2026, y esa lectura era falsa como estaba escrita**
+([`mediciones/convergencia-tasa/`](../mediciones/convergencia-tasa/RESULTADOS.md)). El operador
+de exceso es un **acumulador**: con demanda exógena dos niveles iniciales mantienen su diferencia
+exactamente, `c = 1`. La convergencia no está en la regla, está en la demanda respondiendo al
+precio. El problema abierto 2 **no se cayó: se reubicó** a una pregunta empírica sobre
+elasticidad, con un número — 2,05 sobre 25 épocas.
 
 ### 6.5 · Lo que costó, y de qué forma era el post que lo produjo
 

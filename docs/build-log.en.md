@@ -703,9 +703,15 @@ growth rate** instead of varying the cost.
 
 That lands on [open problem 2](open-problems.en.md#2--the-permanence-rate-rule-and-the-level-it-starts-from),
 where it is developed. In one line: **there the control law is complete and the initial level is
-not**, exactly as here — and EIP-1559 suggests the initial level may not be needed at all,
-because the price is the loop's fixed point rather than an input. If that holds, open problem 2
-goes away.
+not**, exactly as here — and EIP-1559 suggested the initial level might not be needed at all,
+because the price is the loop's fixed point rather than an input.
+
+**Measured on 2026-08-28, and that reading was false as stated**
+([`mediciones/convergencia-tasa/`](../mediciones/convergencia-tasa/RESULTADOS.md)). The excess
+operator is an **accumulator**: under exogenous demand two initial levels keep their difference
+exactly, `c = 1`. The convergence is not in the rule, it is in demand responding to price. Open
+problem 2 **did not go away: it relocated** into an empirical question about elasticity, with a
+number — 2.05 over 25 epochs.
 
 ### 6.5 · What it cost, and what shape the post that produced it had
 
