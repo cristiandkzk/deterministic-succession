@@ -554,6 +554,14 @@ epochs, not in token units.** In token units it would be a *second* price to set
 with the same problem and none of its defenses. With that, what stays open is **one number and not
 two**.
 
+> **Corrected 2026-08-28, after measuring.** *"No calculation crosses that without reading a
+> price"* is still true and still not sufficient. The excess operator of 4844/7999 does not
+> converge on its own — it is an integrator, `c = 1` under exogenous demand — and what makes it
+> converge is the elasticity of demand. **The boundary moved from "you must know the price" to
+> "demand must be elastic above 2.05 over 25 epochs"**: it was not crossed, it became
+> measurable. See [`mediciones/convergencia-tasa/`](../mediciones/convergencia-tasa/RESULTADOS.md)
+> and [section 6](#6--the-first-external-review).
+
 ### 3.7 · Phase 6 — the devnet, and what no invariant was watching
 
 The phase was deliberately narrowed: of the four questions assigned to it, two had already been

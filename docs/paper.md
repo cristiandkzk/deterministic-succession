@@ -1805,6 +1805,15 @@ mandó denominar el piso en épocas de guardado (§8.5): **todo lo que se pueda 
 del presupuesto del nodo se deriva, y todo lo que exija una unidad monetaria queda de este lado del
 muro.** Con el piso del lado derivable, lo que queda abierto es un solo número y no dos.
 
+> **Nota del 28/8/2026 — la frontera se corrió de lugar.** Al medir el operador de exceso de
+> EIP-4844/7999 se vio que el nivel inicial **no** se borra solo: el acumulador es un integrador y
+> con demanda exógena dos niveles iniciales mantienen su diferencia exactamente. La convergencia
+> viene de que la demanda responde al precio, con `c(e) = |1 − e·target/k|`. **La cadena sigue sin
+> poder leer un precio, pero ya no hace falta que lo lea: hace falta que la demanda sea
+> elástica** — y con `L_MAX` de 25 épocas, por encima de **2,05**. El muro no desapareció; dejó de
+> ser una imposibilidad y pasó a ser una magnitud que alguien puede medir afuera. Desarrollo en
+> `mediciones/convergencia-tasa/`.
+
 **El replay de §11 le puso número a este problema, y en un parámetro ajeno.** Ethereum raciona el
 gas con un precio que computa el propio protocolo —el base fee de EIP-1559— y ese precio cayó **650
 veces en cuatro años**. Cualquier nivel nominal fijado en Genesis habría dejado de significar lo

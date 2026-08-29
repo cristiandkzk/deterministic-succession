@@ -574,6 +574,14 @@ de guardado, no en unidades del token.** En unidades sería un *segundo* precio 
 lado de la tasa, con el mismo problema y ninguna de sus defensas. Con eso, lo que queda
 abierto es **un solo número y no dos**.
 
+> **Corregido el 28/8/2026, después de medir.** *«Ninguna cuenta cruza eso sin leer un
+> precio»* sigue siendo cierto y sigue sin alcanzar. El operador de exceso de 4844/7999 no
+> converge solo —es un integrador, `c = 1` con demanda exógena— y lo que lo hace converger es
+> la elasticidad de la demanda. **La frontera pasó de «hay que conocer el precio» a «la demanda
+> tiene que ser elástica por encima de 2,05 en 25 épocas»**: no se cruzó, se volvió medible.
+> Ver [`mediciones/convergencia-tasa/`](../mediciones/convergencia-tasa/RESULTADOS.md) y la
+> [sección 6](#6--la-primera-revisión-externa).
+
 ### 3.7 · Fase 6 — el devnet, y lo que ninguna invariante miraba
 
 La fase se acotó a propósito: de las cuatro preguntas que tenía asignadas, dos ya las habían
