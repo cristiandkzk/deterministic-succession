@@ -126,8 +126,24 @@ la dispersión del escritorio es de 44 a 79 M pasos/s según cuándo se corra, c
 teléfono.
 
 **Dos máquinas no alcanzan para fijar un piso de hardware, y cerrarlo necesita más máquinas, no
-más análisis.** Si corrés el arnés y pegás tus números en un issue, eso es un problema abierto
-declarado que se cierra. Ver [`genesis/predicado/vm/LEEME.md`](genesis/predicado/vm/LEEME.md).
+más análisis.** Si corrés el arnés y pegás tus números, eso es un problema abierto declarado
+que se cierra. Sin más dependencias que el toolchain de Rust:
+
+    cd genesis/predicado/vm
+    cargo run --release --bin mezclas     # la tabla de mezclas de instrucciones
+    cargo run --release --bin conjunto    # el barrido de conjunto de trabajo
+
+Los dos imprimen primero un bloque `environment` —CPU, cache, arch, rustc, perfil, commit— y
+nombran lo que no pudieron detectar. **Va pegado con las tablas:** un ritmo sin la máquina que
+lo produjo no se compara con nada.
+
+La vía más corta es la [plantilla de
+medición](https://github.com/cristiandkzk/deterministic-succession/issues/new?template=medicion.yml).
+Las corridas, y el criterio de qué cuenta como válida, están en
+[`mediciones/hardware/`](mediciones/hardware/RESULTADOS.md); el crate está descrito en
+[`genesis/predicado/vm/LEEME.md`](genesis/predicado/vm/LEEME.md).
+
+Números que **contradigan** la tabla de arriba valen tanto como los que la confirmen.
 
 ---
 

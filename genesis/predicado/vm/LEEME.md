@@ -55,6 +55,20 @@ cargo run --release --bin vectores            # genera la tabla de C3
 cargo run --release --bin vectores verificar  # la compara con vectores.csv
 ```
 
+`mezclas` y `conjunto` imprimen primero un bloque `environment` con la procedencia de la
+corrida —CPU, cache, RAM, arch, rustc, perfil y commit—, y **nombran** lo que no pudieron
+detectar en vez de omitirlo: en Windows no hay cache ni RAM sin llamar a la API de Win32, y un
+hueco que se ve lo llena quien corrió. Dos campos hacen casi todo el trabajo: `profile` delata
+una corrida sin `--release`, que no compara con nada, y `commit` mira sólo este crate, así que
+una corrida con el techo de páginas levantado sale marcada `MODIFIED`.
+
+El módulo vive en `src/bin/comun/entorno.rs` y **no en el lib**: lee `/proc`, el registro de
+Windows y `git`, que es justo lo que no puede aparecer en la pieza que I1 congela.
+
+Si corrés esto en una máquina que no sea la de referencia, las corridas aterrizan en
+[`mediciones/hardware/`](../../../mediciones/hardware/RESULTADOS.md) — es el problema abierto 1
+y es el único que no cierra pensando.
+
 ### En el teléfono (Termux, aarch64) — lo que falta para cerrar C3
 
 **Este crate no es autocontenido:** `lib.rs` hace `include_bytes!` del ELF del guest de Test 2,

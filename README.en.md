@@ -127,8 +127,24 @@ Above 96 pages the desktop runs the worst mix **slower than the phone**, and the
 dispersion is 44–79 M steps/s depending on when you run it, against 1.6% on the phone.
 
 **Two machines are not enough to fix a hardware floor, and closing it needs more machines,
-not more analysis.** If you run the harness and post your numbers in an issue, that is a
-declared open problem getting closed. See [`genesis/predicado/vm/LEEME.md`](genesis/predicado/vm/LEEME.md).
+not more analysis.** If you run the harness and post your numbers, that is a declared open
+problem getting closed. No dependencies beyond the Rust toolchain:
+
+    cd genesis/predicado/vm
+    cargo run --release --bin mezclas     # the instruction-mix table
+    cargo run --release --bin conjunto    # the working-set sweep
+
+Both print an `environment` block first — CPU, cache, arch, rustc, profile, commit — and name
+whatever they could not detect. **Paste it with the tables:** a rate without the machine that
+produced it can't be compared to anything.
+
+The [measurement
+template](https://github.com/cristiandkzk/deterministic-succession/issues/new?template=medicion.yml)
+is the quickest way in. Results, and the criterion for what counts as a valid run, live in
+[`mediciones/hardware/`](mediciones/hardware/RESULTADOS.md); the crate itself is described in
+[`genesis/predicado/vm/LEEME.md`](genesis/predicado/vm/LEEME.md).
+
+Numbers that **contradict** the table above are as useful as numbers that confirm it.
 
 ---
 
