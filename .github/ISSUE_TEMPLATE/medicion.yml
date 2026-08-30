@@ -1,0 +1,93 @@
+name: "Medición / Measurement"
+description: "Corriste el benchmark en tu máquina · You ran the benchmark on your machine"
+title: "[medicion] "
+labels: ["medicion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Esto cierra el único problema abierto que no cierra pensando.** El número que sale
+        de acá es una constante de Genesis: `R_declarado` se calibra contra el peor caso y
+        después no se levanta. Hay dos máquinas medidas y las dos son del autor.
+
+        Corré los dos binarios y pegá la salida **entera, con el bloque `environment` que
+        imprimen arriba de todo**. Un ritmo sin la máquina que lo produjo no se compara con
+        nada.
+
+            cd genesis/predicado/vm
+            cargo run --release --bin mezclas
+            cargo run --release --bin conjunto
+
+        *This closes the one open problem that doesn't close by thinking. Run both binaries
+        and paste the full output, including the `environment` block they print first. Two
+        rules: build with `--release`, and report the worst of several passes, never the
+        mean. `mezclas` already takes the worst of three internally; `conjunto` does a single
+        pass per point, so if your machine is noisy, run it twice and paste both.*
+
+        El registro vive en [`mediciones/hardware/RESULTADOS.md`](../blob/main/mediciones/hardware/RESULTADOS.md),
+        con el criterio de qué cuenta como corrida válida escrito antes de juntar nada.
+
+  - type: textarea
+    id: mezclas
+    attributes:
+      label: "Salida de `mezclas` · Output of `mezclas`"
+      description: "Completa, con el bloque `environment`. Es la que da el cociente peor/ML-DSA, que es lo único que se transfiere entre máquinas."
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: conjunto
+    attributes:
+      label: "Salida de `conjunto` · Output of `conjunto`"
+      description: "El barrido de conjunto de trabajo. Es la que dice dónde se desploma tu máquina y si eso cae donde tu último nivel de cache predice."
+      render: text
+    validations:
+      required: false
+
+  - type: input
+    id: cache
+    attributes:
+      label: "Tamaños de cache · Cache sizes"
+      description: |
+        Solo si el bloque dice `unknown` —pasa en Windows, que no lo expone sin llamar a la API de Win32—.
+        L1d / L2 / L3. Es el campo que explica el desplome, no un adorno.
+        *Only if the environment block says `unknown`. This is the field that explains the cliff.*
+      placeholder: "L1d 32K · L2 1.5 MB total · L3 9 MB"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: estado
+    attributes:
+      label: "¿Cómo estaba la máquina? · What state was the machine in?"
+      description: "La dispersión entre corridas es un resultado abierto del proyecto, así que esto no es una formalidad."
+      options:
+        - "Ociosa: sin sesión interactiva, sin nada pesado de fondo"
+        - "Con sesión interactiva o carga de fondo"
+        - "No sé"
+    validations:
+      required: true
+
+  - type: textarea
+    id: tocado
+    attributes:
+      label: "¿Tocaste el arnés? · Did you modify the harness?"
+      description: |
+        Si el bloque dice `MODIFIED`, decí qué cambiaste. Levantar el techo de páginas para la
+        última fila es legítimo y está pedido — pero esa fila no es la misma medición que las otras.
+        *If the environment block says `MODIFIED`, say what you changed.*
+    validations:
+      required: false
+
+  - type: textarea
+    id: raro
+    attributes:
+      label: "¿Algo se ordenó distinto de lo esperado? · Did anything rank unexpectedly?"
+      description: |
+        Lo que más interesa no es el ritmo absoluto: es si **el orden entre mezclas cambia** respecto
+        de las máquinas ya medidas, y si arriba de cierto conjunto de trabajo tu máquina resulta más
+        lenta que un teléfono. Si tus números NO reproducen eso, decilo — sirve igual.
+        *Contradicting the existing results is as useful as confirming them.*
+    validations:
+      required: false

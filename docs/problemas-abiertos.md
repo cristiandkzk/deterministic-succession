@@ -281,9 +281,24 @@ con más hardware. **El número que salga de ahí es una constante de Genesis.**
 
 Lo que hace falta es correr las mezclas adversariales en todo lo que se consiga —otro
 teléfono, un ARM de servidor, una notebook, un núcleo grande de x86— y ver dónde cae la peor
-mezcla. El paquete del benchmark es autocontenido y está en
-[`mediciones/test2-interprete/`](../mediciones/test2-interprete/RESULTADOS.md), con el
-procedimiento escrito.
+mezcla. El benchmark es un crate de Rust chico y sin dependencias:
+
+    cd genesis/predicado/vm
+    cargo run --release --bin mezclas     # la tabla de mezclas de instrucciones
+    cargo run --release --bin conjunto    # el barrido de conjunto de trabajo
+
+Los dos binarios imprimen primero un bloque `environment` —CPU, cache, arch, rustc, perfil,
+commit— y nombran lo que no pudieron detectar. **Va pegado con las tablas:** un ritmo sin la
+máquina que lo produjo no se compara con nada.
+
+Las corridas aterrizan en [`mediciones/hardware/`](../mediciones/hardware/RESULTADOS.md), que
+lleva el criterio de qué cuenta como corrida válida, escrito antes de juntar ninguna. La vía
+más corta es la [plantilla de
+medición](https://github.com/cristiandkzk/deterministic-succession/issues/new?template=medicion.yml).
+
+*(El arnés viejo de seis motores de Test 2 está en
+[`mediciones/test2-interprete/`](../mediciones/test2-interprete/RESULTADOS.md). No es el que
+produjo los números de arriba.)*
 
 Un dato útil sobre la dispersión: **el escritorio dio entre 44 y 79 M pasos/s según cuándo se
 corriera, contra 1,6% de variación en el teléfono.** Cualquier medición nueva tiene que

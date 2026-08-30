@@ -279,10 +279,25 @@ spend time rediscovering them.
 more hardware. **The number that comes out of it is a genesis constant.**
 
 What is needed is to run the adversarial mixes on anything available — another phone, a server ARM,
-a laptop, a large x86 core — and see where the worst mix lands. The benchmark package is
-self-contained and lives in
-[`mediciones/test2-interprete/`](../mediciones/test2-interprete/RESULTADOS.md), with the procedure
-written down *(in Spanish, but the commands and CSVs are language-independent)*.
+a laptop, a large x86 core — and see where the worst mix lands. The benchmark is a small Rust crate
+with no dependencies:
+
+    cd genesis/predicado/vm
+    cargo run --release --bin mezclas     # the instruction-mix table
+    cargo run --release --bin conjunto    # the working-set sweep
+
+Both binaries print an `environment` block first — CPU, cache, arch, rustc, profile, commit — and
+mark by name whatever they could not detect. **Paste it with the tables:** a rate without the
+machine that produced it can't be compared to anything.
+
+Results land in [`mediciones/hardware/`](../mediciones/hardware/RESULTADOS.md), which carries the
+criterion for what counts as a valid run, written before any were collected. The quickest way in is
+the [measurement issue
+template](https://github.com/cristiandkzk/deterministic-succession/issues/new?template=medicion.yml).
+
+*(The older six-engine harness of Test 2 lives in
+[`mediciones/test2-interprete/`](../mediciones/test2-interprete/RESULTADOS.md). It is not the one
+that produced the numbers above.)*
 
 One useful data point about dispersion: **the desktop gave between 44 and 79 M steps/s depending on
 when it ran, against 1.6% variation on the phone.** Any new measurement must report the worst of

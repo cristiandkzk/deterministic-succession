@@ -23,6 +23,9 @@ use std::time::Instant;
 use vm::maquina::{Maquina, Veredicto, MEM};
 use vm::{i, jal};
 
+#[path = "comun/entorno.rs"]
+mod entorno;
+
 const CUERPO: usize = 1024;
 const DATOS: u32 = 1 << 20;
 
@@ -94,10 +97,14 @@ fn ritmo(programa: &[u32], ram: &[u8]) -> f64 {
 }
 
 fn main() {
-    println!("# 1. ritmo de la persecucion segun el tamano de la region");
-    println!("region_KiB,ritmo_Mpasos_s,cociente_vs_ML_DSA");
-    // 260,4 M pasos/s: ML-DSA-44 medido en esta misma maquina por `mezclas`.
+    entorno::imprimir();
+    // 260,4 M pasos/s: ML-DSA-44 medido por `mezclas` en la maquina de referencia.
     let referencia = 260.4_f64;
+    println!("# 1. ritmo de la persecucion segun el tamano de la region");
+    println!("# note: the ratio column divides by ML-DSA-44 = {referencia} M steps/s, measured");
+    println!("#       by `mezclas` on the reference machine. On another machine that ratio is");
+    println!("#       not machine-local: run `mezclas` there and divide by the rate it reports.");
+    println!("region_KiB,ritmo_Mpasos_s,cociente_vs_ML_DSA");
     for kib in [16u32, 64, 128, 192, 256, 384, 512, 1024, 2048, 4096, 16384] {
         let region = kib * 1024;
         if region >= MEM - DATOS {

@@ -26,6 +26,9 @@ use std::time::Instant;
 use vm::maquina::{Maquina, Veredicto, MEM, PAGINA};
 use vm::{i, jal, r};
 
+#[path = "comun/entorno.rs"]
+mod entorno;
+
 /// Cuerpo del bucle: suficientemente largo para que el `jal` de vuelta sea ruido
 /// (1/1024 = 0,1%) y para no caber entero en el predictor de saltos del host.
 const CUERPO: usize = 1024;
@@ -348,6 +351,7 @@ fn ritmo_mldsa() -> Option<(f64, u64, u32)> {
 }
 
 fn main() {
+    entorno::imprimir();
     println!("# C7 — ritmo por mezcla de instrucciones.");
     println!("# maquina: {} · techo de paginas: {}", std::env::consts::ARCH, vm::PAGINAS_INICIALES);
     println!();
