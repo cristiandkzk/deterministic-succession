@@ -12,7 +12,7 @@ que el nodo se cuelgue o se caiga.
 
 ```
 src/
-├── lib.rs        # las constantes de Genesis y los ensambladores del arnés
+├── lib.rs        # las constantes de Geminis y los ensambladores del arnés
 ├── maquina.rs    # el intérprete: dos techos, trampas, veredictos canónicos
 ├── admision.rs   # lo que se decide antes de gastar el primer paso
 └── bin/          # las mediciones — ver ../RESULTADOS.md

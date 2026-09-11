@@ -10,7 +10,7 @@
 > —y ahí, además, es gratis—.
 
 **Todo lo que se construya acá es desechable por declaración**, y se reescribe cuando se sepa qué
-espacio de parámetros tiene que anticipar Genesis. **Fecha de reset: el día que se elija la regla
+espacio de parámetros tiene que anticipar Geminis. **Fecha de reset: el día que se elija la regla
 de la tasa de permanencia** (§10.3), porque ése es el número que cambia el espacio.
 
 ## Y la fase se acota, porque dos de sus cuatro preguntas ya están contestadas

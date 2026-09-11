@@ -102,7 +102,7 @@ Y entonces se detiene justo antes del borde:
 **Ese es el hallazgo más nítido del test.** En mayo de 2026, la cadena de contratos más
 grande escribe un cronograma de parámetros y decide explícitamente no hacerlo vinculante.
 La necesidad está documentada por sus propios EIPs; lo que falta es exactamente la pieza
-que este diseño pone en Genesis.
+que este diseño pone en Geminis.
 
 ### Condición 1 — el trigger, que es lo que hay que construir
 
@@ -207,7 +207,7 @@ tiene corriendo— y aun así la transición es imposible. Lo que falta es **leg
 la legitimidad se compra en el bloque 0 o no se compra.
 
 Es exactamente lo que sostiene §5, y es el argumento comercial del diseño en una frase: la
-ventana para escribir la regla de sucesión es Genesis.
+ventana para escribir la regla de sucesión es Geminis.
 
 **Debilidad honesta:** la emisión terminal de Monero es una **constante**, no una selección
 en función del estado. Ejercita el disparo, no el sucesor.
@@ -281,7 +281,7 @@ horas— y **estaba mal**. Osciló, corrió miles de bloques por delante de Bitc
 el cronograma de emisión. Se reemplazó por **hard fork humano** el 13 de noviembre de 2017.
 
 Es la instancia exacta de la primera frontera de §10.1: *"la adaptación está acotada a lo
-que Genesis anticipó"*. Escribir la regla por adelantado **no elimina el fork — lo mueve al
+que Geminis anticipó"*. Escribir la regla por adelantado **no elimina el fork — lo mueve al
 caso en que la regla escrita es la equivocada**, y ahí no hay override por construcción.
 
 También es evidencia a favor de dos exigencias de I2 que podrían parecer decorativas: la

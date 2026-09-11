@@ -9,7 +9,7 @@ ese cambio sin voto, sin fork político y sin intervención humana en la decisi�
 
 La evolución de un protocolo es hoy un acto de gobernanza: alguien propone, alguien decide,
 alguien se va. Este documento describe una alternativa — que la regla de sucesión viva dentro
-de Genesis y se ejecute sola cuando el estado de la cadena cumple una condición verificable.
+de Geminis y se ejecute sola cuando el estado de la cadena cumple una condición verificable.
 
 El resultado no es una familia de cadenas: es **una sola cadena que conmuta su ruleset por
 generaciones**, conservando el estado íntegro y encadenando cada generación a su ancestro por
@@ -38,7 +38,7 @@ se vuelve político.
 
 ## 2. La propuesta
 
-Genesis contiene, además de las reglas de la primera generación, tres cosas más:
+Geminis contiene, además de las reglas de la primera generación, tres cosas más:
 
 - **`TRANSITION_RULE`** — la condición de disparo, computable desde el estado de la cadena.
 - **El espacio de parámetros** de todos sus descendientes posibles.
@@ -110,13 +110,13 @@ sorpresa. El mecanismo tiene tres tiempos, no dos:
 3. **Activación.** `Δ` bloques después del lock-in —no después del disparo, así el aviso es
    exactamente `Δ` y no depende de cuánto haya tardado la finalidad— el nodo conmuta.
 
-`Δ` está fijado en Genesis **por clase de transición**, no globalmente: una transición de
+`Δ` está fijado en Geminis **por clase de transición**, no globalmente: una transición de
 circulación tolera una ventana larga —la emisión se pausa unas semanas y no pasa nada—, mientras
 que una migración criptográfica bajo ataque necesita lo contrario. El intercambio es real y está
 declarado en §10.1.
 
 El hash de cada generación se deriva del de su ancestro, del estado que disparó la transición y
-de los parámetros seleccionados. Genesis A **no conoce el hash de B** —no puede, porque B
+de los parámetros seleccionados. Geminis A **no conoce el hash de B** —no puede, porque B
 incorpora información que todavía no existe— pero conoce determinísticamente cómo se calculará:
 
 ```
@@ -163,7 +163,7 @@ computa `H0_B`. Con dos transiciones en vuelo, unos parámetros calculados en el
 de un ancestro que dejó de ser el último, y el linaje no cerraría.
 
 **Y por eso el lock-in verifica antes de comprometer.** Un checkpoint es irrevocable: si
-comprometiera un punto fuera del espacio de Genesis, el nodo llegaría a la activación sin poder
+comprometiera un punto fuera del espacio de Geminis, el nodo llegaría a la activación sin poder
 conmutar y la cadena se detendría. El sucesor se verifica contra el espacio y contra la
 aditividad de la interfaz **antes** de emitirlo, y si no pasa no hay checkpoint sino un **rechazo**,
 también on-chain. Un rechazo no recorta el sucesor al borde del espacio —eso cambiaría la regla en
@@ -207,8 +207,8 @@ el disparo — y por eso `H0_B` no incluye alturas: mover *cuándo* no cambia *q
 Cinco propiedades no negociables. Cada una elimina una forma de reintroducir al humano en el
 lazo.
 
-**I1 · El intérprete vive en Genesis y no cambia nunca.** Una transición no introduce código de
-nodo: selecciona un punto de un espacio que el nodo **ya sabe ejecutar**. Lo que Genesis fija de
+**I1 · El intérprete vive en Geminis y no cambia nunca.** Una transición no introduce código de
+nodo: selecciona un punto de un espacio que el nodo **ya sabe ejecutar**. Lo que Geminis fija de
 manera permanente no es una lista de reglas posibles sino la **máquina que las corre**, y el
 espacio de descendientes es todo lo que esa máquina puede ejecutar (§6.6). Si hiciera falta
 cambiar el intérprete, no sería una transición — sería un fork común y corriente.
@@ -219,7 +219,7 @@ El espacio está partido en dos mitades con reglas distintas. Los parámetros **
 la vía de I5.
 
 *Esta invariante se debilitó a propósito, y el costo está declarado en §10.1: con un intérprete,
-el conjunto de futuros posibles deja de ser auditable desde Genesis.*
+el conjunto de futuros posibles deja de ser auditable desde Geminis.*
 
 **I2 · El trigger se computa solo desde el estado de la cadena, y nadie elige el momento.** Sin
 oráculos, sin firmas, sin votos, sin insumos externos: un trigger que necesita que alguien lo
@@ -244,7 +244,7 @@ publica *sin aproximación observable* en lugar de inventar una fecha.
 
 Las dos excluyen lo mismo: un hecho que una parte identificable puede producir a voluntad y
 barato. Y las dos tienen su límite escrito. Ningún nodo puede verificar que la capacidad declarada
-sea la verdadera: eso se audita en Genesis, que es donde el espacio de reglas está fijo y a la
+sea la verdadera: eso se audita en Geminis, que es donde el espacio de reglas está fijo y a la
 vista (I1), y por eso la declaración es obligatoria y explícita en vez de implícita. Y la distancia
 de la primera forma es una **proyección al ritmo actual**, no una promesa — el ritmo puede cambiar.
 La promesa es `Δ`, que se cuenta desde el lock-in y no depende de que nadie haya sabido ver venir
@@ -279,7 +279,7 @@ En Bitcoin la posición conservadora —no cambiar nada— es el default. Quien 
 reglas tiene que escribir software nuevo, y la cadena que sigue igual puede reclamar ser la
 original. Acá es al revés: el cliente estándar conmuta solo, así que **para no conmutar hay que
 modificar activamente el software** y desactivar la regla de transición. El que se queda en las
-reglas viejas no preserva la cadena original — se desvía de Genesis, y no puede invocar a Genesis
+reglas viejas no preserva la cadena original — se desvía de Geminis, y no puede invocar a Geminis
 para justificarlo.
 
 La consecuencia práctica es que *"cuál es la verdadera"* deja de ser una pregunta social. Un
@@ -534,11 +534,11 @@ mide en minutos u horas.
 
 Toda primitiva criptográfica termina cediendo, y una cadena que no puede reemplazar las suyas
 tiene fecha de vencimiento. El problema es que *"la primitiva se rompió"* no está en el estado de
-la cadena, así que no puede ser un trigger (I2); y si Genesis trajera una **lista** de primitivas
+la cadena, así que no puede ser un trigger (I2); y si Geminis trajera una **lista** de primitivas
 de reemplazo, la lista se agotaría y haría falta un fork humano. Ninguna de las dos cosas es
 aceptable, y las dos se resuelven con el mismo lazo.
 
-**El canario convierte la rotura en un hecho del estado.** Genesis publica una versión
+**El canario convierte la rotura en un hecho del estado.** Geminis publica una versión
 deliberadamente debilitada de la primitiva, con una recompensa on-chain. Si alguien la rompe y
 la reclama, eso **sí** es estado: hay una preimagen o una falsificación escrita en un bloque. El
 trigger no lee *"la criptografía se rompió"* — lee *"el canario fue reclamado"*, que es
@@ -546,13 +546,13 @@ observable, determinístico y sin oráculo. La recompensa además hace que algui
 intente: es el mismo patrón de §6.4, el vigilante financiado por el botín.
 
 **La instancia debilitada se deriva; no se genera.** Es la condición que vuelve admisible al
-canario bajo I2 —la forma de *capacidad demostrada*— y es fácil pasarla por alto. Si Genesis
+canario bajo I2 —la forma de *capacidad demostrada*— y es fácil pasarla por alto. Si Geminis
 **generara** la instancia —un módulo, un par de claves—, quien la generó conservaría su trampa y
 podría reclamar el canario cuando se le diera la gana. Lo que I2 admite como capacidad demostrada
 sería, en realidad, un secreto que alguien se guardó: el canario dejaría de ser una alarma para
 ser una compuerta con disfraz criptográfico, o sea la misma gobernanza que el diseño elimina, pero
 mucho más difícil de ver. Por eso la instancia sale de una **semilla pública** por un
-procedimiento determinista, sin nada en la manga, y cualquiera la rederiva desde Genesis. Un
+procedimiento determinista, sin nada en la manga, y cualquiera la rederiva desde Geminis. Un
 canario que no se puede rederivar de su semilla no es un canario: es de alguien.
 
 **La escalera de canarios gradúa la respuesta.** Un canario débil cede años antes que uno
@@ -560,7 +560,7 @@ fuerte, así que el débil dispara una migración con `Δ` largo —planificada,
 fuerte una con `Δ` corto. Para cuando alguien pueda romper el fuerte, la migración ya se hizo. Es
 lo que evita el caso de una sorpresa criptográfica con ventana de gracia corta.
 
-**El intérprete quita el fondo de la escalera.** Como Genesis fija la máquina y no la lista (I1),
+**El intérprete quita el fondo de la escalera.** Como Geminis fija la máquina y no la lista (I1),
 una primitiva nueva es **bytecode**, no código de nodo. El nodo no se actualiza nunca porque ya
 sabe ejecutar la máquina, y el conjunto de primitivas posibles deja de ser finito.
 
@@ -604,7 +604,7 @@ demás.
 **Y el techo no se elige: se deriva.** Es lo que ata `§6.1` con `§6.6` en una sola cuenta —
 `techo = f* × tiempo_de_bloque × R_declarado / tx_por_bloque`, donde `f*` es la fracción del nodo
 liviano que puede ocupar la verificación de firmas y `R_declarado` es el ritmo del hardware de
-entrada, ambos congelados en Genesis, y los otros dos son parámetros internos de la generación. Lo
+entrada, ambos congelados en Geminis, y los otros dos son parámetros internos de la generación. Lo
 que I1 congela es **la fórmula**; el valor lo pone cada generación. El desarrollo, las dos
 constantes y lo que queda decidido está en §10.3.
 
@@ -638,7 +638,7 @@ afuera para siempre, y ninguna cuenta lo señala.
 
 **La salida es la misma jugada que ya había cerrado el techo de pasos: dejar de congelar un punto y
 congelar la cuenta.** Acá la cuenta es una curva —cuánto ritmo sostiene el hardware de referencia
-para cada presupuesto de memoria—, medida una vez y congelada en Genesis. El presupuesto de páginas
+para cada presupuesto de memoria—, medida una vez y congelada en Geminis. El presupuesto de páginas
 pasa a ser un parámetro interno como el tiempo de bloque o la capacidad, y **pedir más memoria baja
 el ritmo declarado, que baja el techo de pasos, que se paga en capacidad**. Con eso los dos techos
 dejan de ser dos: son la misma cota de tiempo mirada por dos lados.
@@ -685,7 +685,7 @@ canario roto  →  pedido de trabajo  →  candidatas entregadas
 El lazo se repite indefinidamente, todo on-chain y sin que nadie decida nada. Los cuatro costos
 que esto trae están en §10.1, y el que decide si es realizable está en §12.
 
-**Convergencia previa.** La idea de que una cadena lleve precargado desde Genesis el mecanismo de
+**Convergencia previa.** La idea de que una cadena lleve precargado desde Geminis el mecanismo de
 su propia sucesión criptográfica ya había aparecido: en febrero de 2018, Justin Drake propuso
 *cryptographic canaries* en Ethereum Research — un mecanismo con un bounty, redimible mediante una
 prueba de amenaza, que al activarse conmuta automáticamente a una primitiva criptográfica de
@@ -699,7 +699,7 @@ sí constituye evidencia de que la premisa merece consideración independiente.
 
 La diferencia está en la profundidad de la sucesión. El respaldo de Drake es un mecanismo
 precableado de un solo escalón: una transición hacia una primitiva alternativa. Aquí, en cambio, el
-sucesor se deriva dentro de un espacio de transiciones definido por Genesis, y el intérprete permite
+sucesor se deriva dentro de un espacio de transiciones definido por Geminis, y el intérprete permite
 encadenar generaciones sucesivas.
 
 En la discusión original se objetó —y es la objeción que dejó la idea sin avanzar— que calibrar un
@@ -714,7 +714,7 @@ disuelve.
 
 Una sucesión encadenable cambia ese cálculo. Una transición prematura no destruye la capacidad
 futura de recuperación: consume una generación que puede, a su vez, generar la siguiente bajo las
-reglas de Genesis. El trigger deja de tener que ser perfecto — y con eso desaparece la razón por la
+reglas de Geminis. El trigger deja de tener que ser perfecto — y con eso desaparece la razón por la
 que la automatización recaía en supervisión humana.
 
 La segunda objeción de esa misma discusión —que quien puede romper la primitiva gana más
@@ -794,7 +794,7 @@ tokens nuevos indexada a una acción rinde a lo sumo lo que cuesta esa acción, 
 Si paga menos que el costo, nadie la reclama; si paga más, se farmea. Bitcoin pudo porque hashear
 tiene costo externo, físico e imposible de fingir.
 
-**La forma elegida toma la tercera, acotada al bloque 0.** Genesis publica pools con tope por
+**La forma elegida toma la tercera, acotada al bloque 0.** Geminis publica pools con tope por
 clase de nodo, y **reclamar se paga demostrando la capacidad que se reclama**:
 
 | clase | qué demuestra el claim | maquinaria |
@@ -804,7 +804,7 @@ clase de nodo, y **reclamar se paga demostrando la capacidad que se reclama**:
 
 Cuatro propiedades, y la última es la que justifica todo el arreglo:
 
-1. **No necesita identidad.** El costo es externo y físico. Genesis no conoce a nadie, no escribe
+1. **No necesita identidad.** El costo es externo y físico. Geminis no conoce a nadie, no escribe
    ninguna lista de destinatarios y no elige.
 2. **Hace verificable la separación por clase.** Declarar *"soy un nodo de cómputo"* es gratis;
    resolver la tarea de referencia de esa clase no lo es.
@@ -948,7 +948,7 @@ por dos motivos distintos que conviene no fundir: un precio de mercado está pro
 
 ### 7.7 El techo es de la familia, no de la generación
 
-Genesis fija el total y cada generación recibe una porción del mismo cronograma. Una transición
+Geminis fija el total y cada generación recibe una porción del mismo cronograma. Una transición
 **reubica** la emisión, no la agranda: la generación siguiente no gana poder de compra que la
 anterior no tuviera, gana margen de maniobra dentro de un total ya fijado en el bloque 0.
 
@@ -960,7 +960,7 @@ de expansión.
 
 Es la única definición compatible con I2. Descontar custodia, bloqueos o tesorería exige
 clasificar direcciones, y clasificar es juicio humano. Lo único excluible sin romper nada son
-direcciones que Genesis mismo define.
+direcciones que Geminis mismo define.
 
 **Con más de un activo en el estado (§8.5) hay que precisar de qué circulante se habla: del token
 nativo.** Distinguir un activo de otro no es la misma operación que clasificar direcciones y no
@@ -971,7 +971,7 @@ creación; la de una dirección es una interpretación sobre quién está detrá
 cuenta como cualquier otra, así que quien ocupa estado mueve el circulante medido de todos. Es la
 frontera de §10.2, y la salida que la cerraría es justamente abrir acá la primera excepción.
 
-Conviene no confundir dos cosas: que no haya preminado significa que Genesis no otorga custodia,
+Conviene no confundir dos cosas: que no haya preminado significa que Geminis no otorga custodia,
 no que la custodia no exista. Bitcoin tampoco premineó y hoy los exchanges tienen millones de
 BTC. La custodia aparece cuando un humano entrega sus claves, y ningún protocolo puede verlo ni
 impedirlo.
@@ -1177,7 +1177,7 @@ El ciclo consume una cantidad de pasos, y el nodo dedica `f*` de su ritmo a veri
 fracción del cómputo de una época. Guardar la entrada esa época ocupa `tamaño / presupuesto de
 estado` del disco. El piso es el cociente — **cuántas épocas de disco valen lo que el ciclo gasta
 de cómputo**— y no aparece ningún número nuevo, porque `f*` y el presupuesto de estado ya los fijó
-Genesis. Lo que sí aparece es un supuesto que conviene decir: que las dos fracciones están
+Geminis. Lo que sí aparece es un supuesto que conviene decir: que las dos fracciones están
 igualmente ajustadas, o sea que el nodo satura las dos. Es lo que §6.1 construye a propósito al
 fijar ambas contra lo que tiene un teléfono.
 
@@ -1206,7 +1206,7 @@ declara así.
 > actualización barata; uno que guarda sólo los niveles de arriba y recomputa el resto cuesta un
 > byte y hace la actualización tres veces más cara. **Los dos son el mismo árbol y dan pisos
 > distintos**, así que el corte no es una decisión de implementación: entra al estado por la vía
-> del piso, que se quema. Es una constante de Genesis más.
+> del piso, que se quema. Es una constante de Geminis más.
 
 > **Los dos insumos de esa cuenta están medidos y ninguno estimado**, que es lo que la vuelve
 > afirmable: el costo de una verificación de firma en la máquina chica (§12, Test 2) y el de una
@@ -1240,7 +1240,7 @@ que se refuerzan:
   compra siglos, que es exactamente lo que esta sección existe para impedir. Con tope **no se puede
   comprar un siglo ni pagándolo**;
 - **es lo que mantiene gobernable el precio del guardado.** La tasa **no puede quedar congelada en
-  Genesis**: es un precio nominal sobre un recurso real, así que con la unidad flotando se rompe en
+  Geminis**: es un precio nominal sobre un recurso real, así que con la unidad flotando se rompe en
   las dos direcciones —si la moneda se aprecia, guardar se vuelve prohibitivo y el estado se vacía;
   si se deprecia, guardar es gratis y se llena—. Cualquiera sea la regla que la mueva (§10.3),
   **prepagar sin límite es apostar contra ella y dejar el estado tomado mientras tanto**: cuando la
@@ -1393,7 +1393,7 @@ es lo mismo en los tres casos.
 No son problemas a resolver: son el precio de propiedades que el diseño quiere. Se sostienen a
 sabiendas.
 
-**La adaptación está acotada a lo que Genesis anticipó.** Consecuencia directa de I1 y sin arreglo
+**La adaptación está acotada a lo que Geminis anticipó.** Consecuencia directa de I1 y sin arreglo
 dentro del diseño: si la condición que dispara la transición es algo no previsto, no hay ruleset
 que cargar. Es el precio de que no haya código nuevo, que es lo que hace que la transición sea
 verificable.
@@ -1411,7 +1411,7 @@ los integradores necesitan `Δ` largo— lo desactiva la escalera de canarios de
 débil dispara la migración con años de anticipación, así que el camino de emergencia casi nunca
 se usa.
 
-> **Y construir el mecanismo mostró que, a los valores que están en Genesis, esa tensión no
+> **Y construir el mecanismo mostró que, a los valores que están en Geminis, esa tensión no
 > existe.** `Δ` se declara en **bloques** —64 para circulación, 8 para una migración— y con el
 > tiempo de bloque inicial eso da **seis minutos y cuarenta y ocho segundos** de aviso. Ningún
 > integrador reacciona en seis minutos, así que los dos valores están del mismo lado de la
@@ -1430,13 +1430,13 @@ se usa.
 > abierto**, con las tres salidas posibles escritas en la auditoría de unidades del repo.
 
 **El conjunto de futuros posibles deja de ser auditable.** Es el precio del intérprete (I1). Con
-una lista finita de reglas, cualquiera podía leer Genesis y saber en qué se puede convertir la
+una lista finita de reglas, cualquiera podía leer Geminis y saber en qué se puede convertir la
 cadena. Con una máquina, el espacio es infinito y esa lectura ya no existe. Se gana evolución sin
 techo; se pierde poder saber hoy qué puede llegar a ser esto.
 
 **Y el espacio declarado puede quedar corto.** Es la cara opuesta del punto anterior y la encontró
 el replay de §11, no un ataque imaginado. Los parámetros internos no viven en el espacio infinito
-de la máquina: viven en un rango declarado en Genesis, auditable justamente porque es finito.
+de la máquina: viven en un rango declarado en Geminis, auditable justamente porque es finito.
 Ethereum llevó el target de blobs de 3 a 14 en veintidós meses, y las dos últimas subas no fueron
 posibles porque apareciera demanda —la ocupación estaba en 43% y 31%— sino porque apareció una
 técnica de disponibilidad de datos que cambió cuánto puede transportar la red sin degradarse. Un
@@ -1507,7 +1507,7 @@ bit entre ARM y x86 solo aguanta con `+ − × ÷` y sin trascendentales — est
 el guante admitiera candidatas sin restringir eso, el lazo de §6.6 podría instalar una primitiva
 que rompe el determinismo del que depende todo lo demás, PoD incluido (§6.2). Así que la
 especificación de la máquina prohíbe o canonicaliza el flotante **antes de que el guante corra por
-primera vez**, y como es una condición sobre Genesis, después no se levanta. El costo es concreto y
+primera vez**, y como es una condición sobre Geminis, después no se levanta. El costo es concreto y
 no hipotético: toda primitiva que necesite flotante queda fuera del espacio de descendientes para
 siempre. Falcon / FN-DSA verifica con enteros pero firma con flotante, y con esta condición no
 entra nunca.
@@ -1519,7 +1519,7 @@ comparten núcleo — que es el caso por defecto, y no por casualidad: ML-DSA us
 59% de una verificación se va en expandir la matriz con él. Elegir Keccak para `H` acopla las dos
 cosas, y entonces Keccak no cede un escalón: cede el linaje y la firma vigente a la vez, y la
 migración tendría que correr sobre una cadena cuya verificación de linaje ya no es confiable.
-Genesis elige `H` de una familia distinta de la que usa la primitiva de firma inicial. Es barato el
+Geminis elige `H` de una familia distinta de la que usa la primitiva de firma inicial. Es barato el
 día uno e imposible después.
 
 **El lock-in espera a la finalidad, y eso abre una demora que se puede forzar.** La separación
@@ -1531,7 +1531,7 @@ dispuesto a pagar bonos de impugnación intentaría estirar el lock-in. Apunta e
 justo en la migración criptográfica de urgencia — el mismo caso peor que ya tensiona la ventana
 `Δ`.
 
-**El arreglo es un tope duro de bloques de demora al lock-in, fijado en Genesis por clase de
+**El arreglo es un tope duro de bloques de demora al lock-in, fijado en Geminis por clase de
 transición** — la misma forma que `Δ` en §3, aplicada a la otra mitad del cronograma. Se eligió
 tope duro por encima de un bono de impugnación escalonado, y el criterio vale más que el caso:
 
@@ -1555,12 +1555,12 @@ permita.
 Y lo que lo vuelve tolerable sigue siendo lo de siempre: el canario débil dispara con años de
 anticipación, así que el camino de emergencia casi nunca corre.
 
-**El punto flotante queda prohibido o canonicalizado desde Genesis.** Falcon / FN-DSA verifica con
+**El punto flotante queda prohibido o canonicalizado desde Geminis.** Falcon / FN-DSA verifica con
 enteros pero **firma** con punto flotante, y la reproducibilidad bit a bit entre ARM y x86 solo
 aguanta con `+ − × ÷` y sin trascendentales. Si el guante de §6.6 admite candidatas sin restringir
 eso, el lazo puede instalar una primitiva que rompe el determinismo del que depende todo lo demás.
 Es una condición sobre la especificación de la máquina (I1) y hay que escribirla **antes de que el
-guante corra la primera vez**: como toda condición sobre Genesis, es barata el día uno e imposible
+guante corra la primera vez**: como toda condición sobre Geminis, es barata el día uno e imposible
 después. El precio es que estrecha el espacio de primitivas elegibles antes de saber cuáles van a
 existir.
 
@@ -1585,7 +1585,7 @@ mismo muro que §10.2 declara para todo lo demás.
 
 **El estado apunta a la mitad del presupuesto declarado, y no a llenarlo.** El cargo de §8.5
 defiende una **ocupación objetivo**, y esa ocupación se mide contra un presupuesto de disco que
-Genesis declara —del orden de los pocos gigabytes que sostienen el argumento de §6.1— y que sólo
+Geminis declara —del orden de los pocos gigabytes que sostienen el argumento de §6.1— y que sólo
 una transición puede mover, por ser parámetro interno de I1. Así la capacidad crece por decisión de
 una generación y no por deriva del hardware. El valor elegido es **la mitad**, y la mitad que queda
 libre no es holgura desperdiciada: es donde vive el pico de un shock de demanda sostenido, que en
@@ -1650,12 +1650,12 @@ es gratis. Lo que no es una salida es no darse cuenta.
 **El split es ilegítimo, no imposible.** La asimetría de §5 es real: el que no conmuta es el que se
 desvía, y eso se verifica con un hash. Pero legitimidad no es supervivencia. Ethereum Classic
 existe, nadie discute que es un fork, y tiene mercado y mineros igual. La asimetría no mata a la
-cadena disidente — la hace chica. Ninguna regla escrita en Genesis puede impedir el split, porque
+cadena disidente — la hace chica. Ninguna regla escrita en Geminis puede impedir el split, porque
 la regla vive adentro del software que el disidente decidió no correr.
 
 **El hash que encadena el linaje no se puede reemplazar.** Una primitiva de firma nueva aplica
 hacia adelante y las viejas siguen válidas por I5. El hash del linaje no: `H0_B` encadena hacia
-atrás hasta Genesis (§3, I4), y no hay forma de re-hashear una historia que ya está escrita sin
+atrás hasta Geminis (§3, I4), y no hay forma de re-hashear una historia que ya está escrita sin
 romper el compromiso que la hace verificable. La única salida es conservar la función vieja para
 los eslabones viejos, con lo cual una función rota queda de carga estructural para siempre. Un
 canario para `H` sí es construible —una colisión reclamada es un hecho del estado igual que una
@@ -1785,7 +1785,7 @@ esta sección deja abierto, entonces, no es si se indexa: es qué regla se escri
 
 Y de esa regla falta algo más que la forma: **falta el nivel del que parte.** Una ley de control
 dice cómo se mueve la tasa, no dónde empieza, y dónde empieza es un precio —cuánto vale una época
-de guardado en unidades del token— que la cadena no puede leer sin violar I2. O se fija en Genesis
+de guardado en unidades del token— que la cadena no puede leer sin violar I2. O se fija en Geminis
 con un número elegido a mano, y entonces lo único que el diseño promete es que la regla lo corrija
 si estaba mal, o hay que anclarlo a algo que sí esté en el estado y todavía no aparece qué. Es la
 misma forma del primer problema abierto —un número, y dónde vive—, y conviene no esconderlo adentro
@@ -1816,7 +1816,7 @@ muro.** Con el piso del lado derivable, lo que queda abierto es un solo número 
 
 **El replay de §11 le puso número a este problema, y en un parámetro ajeno.** Ethereum raciona el
 gas con un precio que computa el propio protocolo —el base fee de EIP-1559— y ese precio cayó **650
-veces en cuatro años**. Cualquier nivel nominal fijado en Genesis habría dejado de significar lo
+veces en cuatro años**. Cualquier nivel nominal fijado en Geminis habría dejado de significar lo
 que significaba, que es exactamente lo que esta sección afirma de `r0` y hasta ahora no se había
 podido medir.
 
@@ -1884,7 +1884,7 @@ de esta sección.
 > El margen de 2× es la única elección con arbitrio y tiene cota de los dos lados: en 1× el
 > protocolo termina eligiendo la implementación en vez de la interfaz, que es lo contrario de lo que
 > §6.6 busca; en 10× vuelve el caso que el techo existe para excluir. **Se usa una sola vez, en
-> Genesis, para elegir la capacidad** — si el protocolo lo reaplicara en cada transición, volvería a
+> Geminis, para elegir la capacidad** — si el protocolo lo reaplicara en cada transición, volvería a
 > componer.
 >
 > **Y la primera vez que se escribió esto, `R_declarado` decía 300 M y la capacidad 67.** Construir
@@ -1959,7 +1959,7 @@ corren los nodos:
   reproduce las seis veces que Ethereum la corrió, dentro de 37 días, y una de ellas exacta. Pero
   ese número es el promedio de un criterio que **se estaba moviendo**: medida contra la capacidad
   de ajuste de la red, la presión a la que forkearon varió **41×**, y cinco de los seis forks
-  fueron preventivos. Un umbral escrito en Genesis habría sido el equivocado en los dos extremos;
+  fueron preventivos. Un umbral escrito en Geminis habría sido el equivocado en los dos extremos;
 - **los blobs.** Donde la restricción era la demanda, la regla habría actuado **383 días antes**,
   con la ocupación sostenida en el 129% del target. Donde la restricción **no** era la demanda, no
   habría actuado nunca: las dos últimas subas respondieron a que Fusaka trajo PeerDAS, y *"la red
@@ -1980,7 +1980,7 @@ que sigue abierto ahí **ya no es un mecanismo: es un número y dónde vive.**
 
 **Test 3 corrido**: el hueco existe, pero más angosto. El disparo automático sin voto tiene
 precedente (Drake, 2018); lo que no lo tiene es la sucesión encadenable dentro de un espacio
-definido en Genesis. §6.6 se reescribió para citar esa convergencia y para responder la objeción
+definido en Geminis. §6.6 se reescribió para citar esa convergencia y para responder la objeción
 que dejó aquella idea sin avanzar.
 
 **Test 1 pasado**, y es el que más mueve el diseño: el mecanismo tiene cliente —hay transiciones
@@ -2115,7 +2115,7 @@ suficiente.
 > el sucesor es una constante de una curva fija en vez de un punto de un espacio, y no hay
 > encadenamiento. Pero es sucesión determinista sin voto, en Bitcoin, diez años antes.
 > Lo que no aparece en ningún trabajo encontrado es el sucesor
-> derivado dentro de un espacio definido en Genesis, con generaciones encadenables. Trabajo
+> derivado dentro de un espacio definido en Geminis, con generaciones encadenables. Trabajo
 > concurrente a vigilar: *Post-Quantum Blockchains with Agility in Mind* (Tectonic Labs, IACR
 > 2026/609, marzo 2026), que resuelve agilidad por elección operativa de cada usuario, no por
 > sucesión determinista.

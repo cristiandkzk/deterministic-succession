@@ -219,7 +219,7 @@ de PoD ya midió que la reproducibilidad bit a bit entre ARM y x86 solo aguanta 
 lazo de §6.6 puede instalar una primitiva que rompe el determinismo del que depende
 todo lo demás. **La especificación de la máquina (I1) tiene que prohibir o canonicalizar
 el punto flotante antes de que el guante corra por primera vez** — es una condición
-sobre Genesis, y Genesis es lo único que después no se puede cambiar.
+sobre Geminis, y Geminis es lo único que después no se puede cambiar.
 
 ### 5.5 Los cocientes entre motores sí dependen del hardware
 

@@ -308,7 +308,7 @@ se ve venir. Mirado de cerca, el problema era de la invariante:
 > producir el hecho y qué le cuesta.**
 
 Y de ahí salió una condición que el paper no tenía y que es lo más importante de ese día:
-si Genesis **genera** la instancia debilitada de la primitiva, **quien la generó retiene la
+si Geminis **genera** la instancia debilitada de la primitiva, **quien la generó retiene la
 trampa** y puede reclamar el canario cuando quiera. Sería la misma gobernanza que el diseño
 elimina, pero mucho más difícil de ver, y firmada por el propio autor del bloque 0.
 
@@ -352,10 +352,10 @@ subido nada, y habría tenido razón según su propio criterio y le habría erra
 Y de ahí salió una frontera que el paper no tenía:
 
 > ¿Podía la regla subir el target en su momento? Sólo si ese valor estaba en el espacio
-> declarado en Genesis **y era seguro** — y no fue seguro hasta que existió la tecnología
+> declarado en Geminis **y era seguro** — y no fue seguro hasta que existió la tecnología
 > que lo hizo seguro. **El techo del espacio de descendientes estaba acotado por una
 > tecnología que no existía cuando se declaró el espacio.** No es que la regla pueda ser la
-> equivocada: es que el **espacio** puede quedar corto, y I1 lo congela en Genesis.
+> equivocada: es que el **espacio** puede quedar corto, y I1 lo congela en Geminis.
 
 **Caso 3 · el gas limit — el único donde el rival no es un fork.** El gas limit ya se vota
 bloque a bloque: acá el mecanismo compite contra una coordinación liviana, descentralizada y
@@ -481,7 +481,7 @@ comparación contra un ritmo de otra ejecución, que reportó una penalidad de 1
 > que hace de referencia se mide **primero y en frío**. Y cuando el sesgo tiene un lado
 > seguro y uno inseguro, **hay que saber de antemano cuál es cuál.**
 
-Y tres cosas se descubrieron mirando pruebas y no código: una constante de Genesis duplicada
+Y tres cosas se descubrieron mirando pruebas y no código: una constante de Geminis duplicada
 en dos archivos (*una constante en dos archivos es una bifurcación esperando a que alguien
 edite uno solo*); una prueba que no probaba nada por un escape mal puesto; y un contador que
 tenía un interruptor de cuando era instrumentación (*un chequeo que se puede apagar es una
@@ -785,7 +785,7 @@ que ya tienen una refutación escrita, y una propuesta que no la contesta no ava
 | activar transiciones fuera del orden de lock-in | [3.1](#31--fases-0-y-1--el-motor-y-tres-huecos-que-sólo-se-ven-corriendo) |
 | recortar el sucesor al borde del espacio si se pasa | [3.1](#31--fases-0-y-1--el-motor-y-tres-huecos-que-sólo-se-ven-corriendo) |
 | derivar el evento de lock-in sin guardarlo en el estado | [3.1](#31--fases-0-y-1--el-motor-y-tres-huecos-que-sólo-se-ven-corriendo) |
-| que Genesis genere la instancia debilitada del canario | [3.1](#31--fases-0-y-1--el-motor-y-tres-huecos-que-sólo-se-ven-corriendo) — quien la generó retiene la trampa |
+| que Geminis genere la instancia debilitada del canario | [3.1](#31--fases-0-y-1--el-motor-y-tres-huecos-que-sólo-se-ven-corriendo) — quien la generó retiene la trampa |
 | pesar instrucciones por clase, estilo gas | [3.4](#34--fase-4--la-máquina-y-el-techo-que-prometía-de-más-por-23) |
 | el presupuesto de páginas como constante | [3.5](#35--el-muro-del-techo-de-páginas--el-mismo-movimiento-por-segunda-vez) |
 | indexar la tasa a la ocupación sin tope a la vida comprable | [2.5](#25--una-ley-de-control-que-parecía-cerrar-y-no-cerraba) |

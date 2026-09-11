@@ -300,7 +300,7 @@ be seen coming. Examined closely, the problem was the invariant's:
 > produce the fact and what it costs them.**
 
 And out of that came a condition the paper did not have, which is the most important thing from
-that day: if genesis **generates** the weakened instance of the primitive, **whoever generated
+that day: if geminis **generates** the weakened instance of the primitive, **whoever generated
 it retains the trapdoor** and can claim the canary whenever they like. It would be the same
 governance the design eliminates, but far harder to see, and signed by the author of block 0.
 
@@ -343,10 +343,10 @@ and wrong for the network.
 And from that came a boundary the paper did not have:
 
 > Could the rule have raised the target at the time? Only if that value was inside the space
-> declared at genesis **and was safe** — and it wasn't safe until the enabling technology existed.
+> declared at geminis **and was safe** — and it wasn't safe until the enabling technology existed.
 > **The ceiling of the descendant space was bounded by a technology that did not exist when the
 > space was declared.** It is not that the rule may be the wrong one: it is that the **space** may
-> fall short, and I1 freezes it at genesis.
+> fall short, and I1 freezes it at geminis.
 
 **Case 3 · the gas limit — the only case where the rival is not a fork.** The gas limit is already
 voted block by block: here the mechanism competes against lightweight, decentralized, fork-free
@@ -466,7 +466,7 @@ execution, which reported a 1.20× penalty that was **entirely noise** (the real
 > serving as reference is measured **first and cold**. And when a bias has a safe side and an unsafe
 > side, **you have to know in advance which is which.**
 
-Three more things were found by looking at tests rather than code: a genesis constant duplicated
+Three more things were found by looking at tests rather than code: a geminis constant duplicated
 across two files (*a constant in two files is a fork waiting for someone to edit one of them*); a
 test that proved nothing due to a mis-escaped pattern; and a counter that still had an off switch
 from when it was instrumentation (*a check that can be turned off is a fork waiting for two nodes to
@@ -762,7 +762,7 @@ already have a written refutation, and a proposal that doesn't answer it doesn't
 | activate transitions out of lock-in order | [3.1](#31--phases-0-and-1--the-engine-and-three-gaps-only-visible-when-running) |
 | clamp the successor to the edge of the space | [3.1](#31--phases-0-and-1--the-engine-and-three-gaps-only-visible-when-running) |
 | derive the lock-in event without storing it in state | [3.1](#31--phases-0-and-1--the-engine-and-three-gaps-only-visible-when-running) |
-| have genesis generate the canary's weakened instance | [3.1](#31--phases-0-and-1--the-engine-and-three-gaps-only-visible-when-running) — whoever generated it keeps the trapdoor |
+| have geminis generate the canary's weakened instance | [3.1](#31--phases-0-and-1--the-engine-and-three-gaps-only-visible-when-running) — whoever generated it keeps the trapdoor |
 | weight instructions per class, gas-style | [3.4](#34--phase-4--the-machine-and-the-ceiling-that-overpromised-by-23) |
 | the page budget as a constant | [3.5](#35--the-page-ceiling-wall--the-same-move-a-second-time) |
 | index the rate to occupancy with no cap on purchasable lifetime | [2.5](#25--a-control-law-that-seemed-to-close-and-didnt) |

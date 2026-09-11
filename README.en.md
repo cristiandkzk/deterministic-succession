@@ -2,7 +2,7 @@
 
 [![invariantes](https://github.com/cristiandkzk/deterministic-succession/actions/workflows/invariantes.yml/badge.svg)](https://github.com/cristiandkzk/deterministic-succession/actions/workflows/invariantes.yml)
 
-**A chain that carries, written into its genesis block, the rule by which its own rules
+**A chain that carries, written into its geminis block, the rule by which its own rules
 change — and executes that change with no vote, no political fork, and no human in the
 decision loop.**
 
@@ -130,7 +130,7 @@ dispersion is 44–79 M steps/s depending on when you run it, against 1.6% on th
 not more analysis.** If you run the harness and post your numbers, that is a declared open
 problem getting closed. No dependencies beyond the Rust toolchain:
 
-    cd genesis/predicado/vm
+    cd geminis/predicado/vm
     cargo run --release --bin mezclas     # the instruction-mix table
     cargo run --release --bin conjunto    # the working-set sweep
 
@@ -159,7 +159,7 @@ itself calls the dominant risk. Nobody has ever been asked whether they would pa
 It is [attack A](docs/open-problems.en.md#a--is-the-verifiable-work-subset-an-economy-or-a-niche).
 
 **Everything here is disposable by declaration.** The parameters are toy parameters: nobody
-knows yet what space genesis has to anticipate, so these numbers exist to make the mechanism
+knows yet what space geminis has to anticipate, so these numbers exist to make the mechanism
 run, not to be inherited.
 
 ---

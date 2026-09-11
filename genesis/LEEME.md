@@ -1,4 +1,4 @@
-# Genesis · la implementación
+# Geminis · la implementación
 
 Acá vive el código. El diseño está en `../Genesis Paper.md` (fuente de verdad) y
 el plan de construcción en `../ROADMAP.md`. **`§X.Y` siempre cita el paper.**
@@ -42,7 +42,7 @@ paper nunca se había ejecutado. Lo que se ve en la demo —tres generaciones, l
 clases de transición **superpuestas**, el estado cruzando intacto— es eso.
 
 > **Todo lo de acá es desechable por declaración** (ROADMAP §4). Los parámetros
-> son de juguete: no se sabe todavía qué espacio tiene que anticipar Genesis, así
+> son de juguete: no se sabe todavía qué espacio tiene que anticipar Geminis, así
 > que estos números existen para que el mecanismo corra, no para heredarlos.
 
 ---
@@ -51,7 +51,7 @@ clases de transición **superpuestas**, el estado cruzando intacto— es eso.
 
 | módulo | qué implementa |
 |---|---|
-| `protocolo/serializacion.py` | codificación canónica. **El flotante está prohibido desde el primer archivo** — la Fase 4 lo exige antes de que el guante corra, y una condición sobre Genesis no se levanta después |
+| `protocolo/serializacion.py` | codificación canónica. **El flotante está prohibido desde el primer archivo** — la Fase 4 lo exige antes de que el guante corra, y una condición sobre Geminis no se levanta después |
 | `protocolo/genesis.py` | el bloque 0: la máquina, el espacio de descendientes, `Δ` por clase, la ventana de finalidad, `θ*`, `L_max`, **la fórmula del techo de pasos** —que es lo que se congela, no el número (§10.3)— y **el techo de páginas**, que sí es un número y no se deriva |
 | `protocolo/generacion.py` | ruleset, etiqueta de generación, decodificación que **falla cerrado** (I5) |
 | `protocolo/linaje.py` | `H0_B = H( H0_A ‖ state_trigger ‖ params )` y su `Verify` (I4, §3) |
@@ -72,7 +72,7 @@ clases de transición **superpuestas**, el estado cruzando intacto— es eso.
 | `predicado/aceptacion.py` | el predicado de §6.2: los vectores y **los dos techos**. La máquina no está acá |
 | `predicado/vm/` | **la máquina, en Rust.** El único directorio que cambia de lenguaje, y `LEEME.md` dice por qué |
 | `predicado/CRITERIOS.md` | los siete criterios de la Fase 4, escritos antes de la primera línea y sin tocar después |
-| `predicado/RESULTADOS.md` | qué dio: seis aprobados, uno reprobado, y las tres constantes de Genesis que movió |
+| `predicado/RESULTADOS.md` | qué dio: seis aprobados, uno reprobado, y las tres constantes de Geminis que movió |
 | `herramientas/traer_datos.py` | lo único que toca la red: baja las series de Ethereum a `datos/*.csv`, con la procedencia adentro del archivo |
 | `herramientas/replay.py` · `replay_blobs.py` · `replay_gas.py` · `historial.py` | **Fase 2**: la regla candidata contra las seis veces que Ethereum corrió la bomba de dificultad. Cada dato lleva **de dónde salió y contra qué se verificó**. El resultado, en `herramientas/RESULTADOS.md` |
 
@@ -170,7 +170,7 @@ regla y verificadas en cada bloque:
   transición reacciona. Obliga a declarar cuál, on-chain, y a **no inventar una
   fecha**.
 
-**Y de ahí salió una condición sobre §6.6 que no estaba escrita.** *"Genesis publica
+**Y de ahí salió una condición sobre §6.6 que no estaba escrita.** *"Geminis publica
 una versión debilitada de la primitiva"* deja abierto quién la genera — y si la
 genera alguien, ese alguien **retiene la trampa** y puede reclamar el canario cuando
 quiera. Ahí *capacidad demostrada* es *un secreto que alguien se guardó*, y el
@@ -183,7 +183,7 @@ semilla no es un canario, es de alguien.**
 capacidad declarada sea la verdadera. La misma puerta trasera, declarada por
 capacidad, pasa — y `test_declarada_por_capacidad_pasa_y_queda_a_la_vista` la deja
 escrita. Lo que el protocolo sí garantiza es que la razón esté on-chain y a la vista
-para la auditoría de Genesis, que es donde el espacio de reglas está fijo (I1).
+para la auditoría de Geminis, que es donde el espacio de reglas está fijo (I1).
 
 ---
 
@@ -196,7 +196,7 @@ de doce formas que el paper declara imposibles y verifica que la suite las cace:
 | falla introducida | criterios que se caen |
 |---|---|
 | la conmutación toca el estado (rompe I3) | 30 |
-| el sucesor se computa sobre Genesis y no sobre el ruleset comprometido | 24 |
+| el sucesor se computa sobre Geminis y no sobre el ruleset comprometido | 24 |
 | `Δ` se cuenta desde el disparo y no desde el lock-in | 8 |
 | las activaciones no respetan el orden de lock-in | 6 |
 | una regla se rearma en el lock-in y no en la activación (lazo abierto) | 8 |

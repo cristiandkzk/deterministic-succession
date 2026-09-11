@@ -46,7 +46,7 @@ el `h` más chico que da orden `q`.
 
 > **No es criptografía de producción y no pretende serlo**: el grupo es de 134 bits,
 > elegido para que el mecanismo corra y se pueda leer. La primitiva real la elige
-> Genesis (§6.6). Lo que esto demuestra es **la propiedad**, que es lo que el criterio
+> Geminis (§6.6). Lo que esto demuestra es **la propiedad**, que es lo que el criterio
 > pedía.
 
 ---

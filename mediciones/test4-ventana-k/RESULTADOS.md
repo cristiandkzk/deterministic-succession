@@ -276,7 +276,7 @@ El techo desaparece y el autotrato es rentable para todo `k > 0`.
 
 Todo este análisis supone fee *ad valorem*. El paper no lo dice en ningún lado —§6.1 solo
 dice *"un fee chico cada vez que dos contratos interactúan"*, que suena a fee por
-operación. Es una condición sobre Genesis, y como todas las de esa clase, es barata el
+operación. Es una condición sobre Geminis, y como todas las de esa clase, es barata el
 día uno.
 
 ---

@@ -1,4 +1,4 @@
-# Roadmap — Genesis
+# Roadmap — Geminis
 
 **Para quien se suma al proyecto.** Esto dice dónde está parado el proyecto, qué significan las
 palabras que vas a ver en los nombres de archivo, y en qué orden se construye. Leelo antes de
@@ -74,20 +74,20 @@ conmutación: es un fork con otro nombre.
 3. **Activación** — `Δ` bloques **después del lock-in**, no después del disparo. Así el aviso al
    integrador es exactamente `Δ` y no depende de cuánto tardó la finalidad.
 
-**`Δ` (delta).** La ventana de aviso, fijada en Genesis **por clase de transición**. Una
+**`Δ` (delta).** La ventana de aviso, fijada en Geminis **por clase de transición**. Una
 transición de circulación tolera `Δ` largo; una migración criptográfica de urgencia necesita
 `Δ` corto.
 
 **Linaje / `H0_B`.** `H0_B = H( H0_A ‖ state_trigger ‖ params_nuevos )`. No es el génesis de una
 cadena nueva: es un **marcador de checkpoint generacional** dentro de la misma cadena. Hace el
-linaje verificable con un hash desde cualquier generación hacia atrás. Genesis A no conoce el
+linaje verificable con un hash desde cualquier generación hacia atrás. Geminis A no conoce el
 hash de B —no puede— pero conoce cómo se calculará.
 
 **Las cinco invariantes (I1–I5).** El marco duro. Cada una elimina una forma de reintroducir al
 humano en el lazo. **En este repo no son documentación: son aserciones ejecutables que toda fase
 tiene que seguir pasando** (ver Fase 0).
 
-- **I1** — el intérprete vive en Genesis y **no cambia nunca**. Una transición selecciona un
+- **I1** — el intérprete vive en Geminis y **no cambia nunca**. Una transición selecciona un
   punto de un espacio que el nodo ya sabe ejecutar; no introduce código de nodo.
 - **I2** — el trigger se computa sólo desde el estado, **y nadie elige el momento**. Computable no
   alcanza: *"la dirección X recibió 1 wei"* se computa desde el estado y es una compuerta con
@@ -118,11 +118,11 @@ reloj — el reloj sería un oráculo). **Son condiciones de seguridad, no de re
 impide que exista una impugnación más cara de verificar que de crear.
 
 El de pasos **no es un número elegido: es una cuenta** —`f* × tiempo_de_bloque × R_declarado /
-tx_por_bloque`—, y lo que Genesis congela es la fórmula, no el valor. *(Cerrado el 20/8/2026; era
+tx_por_bloque`—, y lo que Geminis congela es la fórmula, no el valor. *(Cerrado el 20/8/2026; era
 el primer problema abierto de §10.3.)*
 
 El de páginas **también se deriva**, desde el 21/8/2026: es un parámetro del ruleset —96 páginas de
-4 KiB en Genesis— y lo que Genesis congela es la **curva** de ritmo contra memoria. **Lo agregó la Fase 4 y no estaba en
+4 KiB en Geminis— y lo que Geminis congela es la **curva** de ritmo contra memoria. **Lo agregó la Fase 4 y no estaba en
 el diseño:** un techo de pasos solo supone que un paso vale un paso, y la peor mezcla de
 instrucciones corre 23× más lento que la carga real. No se arregla pesando instrucciones —`lw`
 cuesta lo mismo que `addi` con el dato en caché y 23× más sin él, **es el mismo opcode**—, así que
@@ -178,7 +178,7 @@ Es la sección que más tiempo ahorra, porque son cinco supuestos que traés pue
    estructura: no hay transacción hasta que firmó.
 5. **La bifurcación no se resuelve, se previene por construcción.** El cliente estándar conmuta
    solo, así que **para no conmutar hay que modificar activamente el software**. El que se queda
-   en las reglas viejas no preserva la cadena original: se desvía de Genesis, y eso se verifica
+   en las reglas viejas no preserva la cadena original: se desvía de Geminis, y eso se verifica
    con un hash. No hace falta lógica de "elegir la rama buena".
 
 ---
@@ -195,7 +195,7 @@ La estructura sigue las piezas del paper, para que el mapeo documento ↔ códig
 
 ```
 genesis/
-├── protocolo/            # lo que Genesis congela y no cambia nunca (I1)
+├── protocolo/            # lo que Geminis congela y no cambia nunca (I1)
 │   ├── genesis.py          # el bloque 0: ruleset inicial, espacio de descendientes,
 │   │                       #   Δ por clase de transición, θ*, L_max
 │   ├── invariantes.py      # I1–I5 como aserciones ejecutables — no comentarios
@@ -265,7 +265,7 @@ Y su corolario, que aplica a todo lo que sigue:
 > valor no hay ingreso, no hay atesoramiento, no se mide la elasticidad de la demanda de guardado
 > y el antispam no se prueba. Peor: la actividad fabricada es indistinguible de la demanda real
 > —y ahí, además, es gratis—. **Todo lo que se construya acá es desechable por declaración**, y
-> hay que reescribirlo cuando se sepa qué espacio de parámetros tiene que anticipar Genesis.
+> hay que reescribirlo cuando se sepa qué espacio de parámetros tiene que anticipar Geminis.
 
 ---
 
@@ -342,7 +342,7 @@ Python**: ya existe el arnés de seis motores de `test2-interprete/telefono` en 
 
 - el presupuesto del intérprete entra **bajo carga de bloque real**, no en benchmark aislado;
 - el flotante está prohibido o canonicalizado **antes de que el guante corra por primera vez** —
-  es condición sobre Genesis y después no se levanta;
+  es condición sobre Geminis y después no se levanta;
 - el conteo de pasos reproduce bit a bit entre x86-64 y ARM64.
 
 **Corrida el 20/8/2026, con seis criterios aprobados y el séptimo reprobado** —y el reprobado es

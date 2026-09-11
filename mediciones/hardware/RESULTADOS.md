@@ -9,7 +9,7 @@ proyecto que no cierra pensando: cierra con más máquinas.
 > [measurement template](https://github.com/cristiandkzk/deterministic-succession/issues/new?template=medicion.yml) — or paste the
 > output in the thread and it gets transcribed here.
 >
->     cd genesis/predicado/vm
+>     cd geminis/predicado/vm
 >     cargo run --release --bin mezclas     # instruction mixes
 >     cargo run --release --bin conjunto    # working-set sweep
 >
@@ -27,7 +27,7 @@ bloqueante no dure, y que la cola de impugnaciones no sature—.
 
 Medido sobre dos máquinas, la frase *el hardware más barato es el peor caso* es
 falsa para patrones adversariales de memoria. Lo que sale de acá no es una
-curiosidad de rendimiento: **es una constante de Genesis**, porque `R_declarado`
+curiosidad de rendimiento: **es una constante de Geminis**, porque `R_declarado`
 se calibra contra el peor caso y una vez congelada no se levanta.
 
 ## Criterio, escrito antes de juntar nada

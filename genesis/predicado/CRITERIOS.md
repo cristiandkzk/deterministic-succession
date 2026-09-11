@@ -30,7 +30,7 @@ verificación y multiplicar por 67 para que dé.
 
 ### C2 · El flotante prohibido antes de que el guante corra por primera vez
 
-Es condición **sobre Genesis**, así que no alcanza con que el flotante falle: tiene que ser
+Es condición **sobre Geminis**, así que no alcanza con que el flotante falle: tiene que ser
 imposible que llegue a correr.
 
 **Aprobado si** las dos cosas:
@@ -83,7 +83,7 @@ el tamaño de memoria es un parámetro. Un mismo programa daría resultados dist
 generaciones, y eso rompe I1 en el único lugar donde no se puede.
 
 **Aprobado si** todo acceso fuera de la región declarada es una trampa determinista, y el
-tamaño de memoria es una constante de Genesis y no un parámetro del espacio interno.
+tamaño de memoria es una constante de Geminis y no un parámetro del espacio interno.
 
 ### C7 · El paso es una unidad honesta *(el que puede reprobar)*
 
@@ -98,7 +98,7 @@ invariante lo ve.
 **Reprobado si** alguna corre por debajo. En ese caso el techo prometía de más y hay dos
 salidas, que se eligen después de ver el número y no antes: bajar `R_declarado` al peor caso
 —simple, y le cobra a todos el costo del peor— o **pesar el paso** por clase de instrucción con
-pesos congelados en Genesis, que es lo que hace el gas y cuesta un decodificador más caro.
+pesos congelados en Geminis, que es lo que hace el gas y cuesta un decodificador más caro.
 
 > Este criterio existe porque el techo se cerró ayer con el dato de una sola mezcla. Es el
 > lugar más probable donde la cuenta de ayer esté mal, así que se mide primero y se escribe el

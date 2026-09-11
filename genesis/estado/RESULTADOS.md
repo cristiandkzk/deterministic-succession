@@ -27,7 +27,7 @@ la cuenta. Escrita, no da eso.
 
 ### La cuenta
 
-Iguala dos fracciones del mismo nodo, y **las dos ya las declara Genesis**:
+Iguala dos fracciones del mismo nodo, y **las dos ya las declara Geminis**:
 
 - **del cómputo** — el ciclo consume `C` pasos y el nodo dedica `f*` de su ritmo a verificar, así
   que gasta `C / (f* × R × duración_de_época)` del cómputo de una época;

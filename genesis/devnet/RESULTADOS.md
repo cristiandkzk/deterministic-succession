@@ -5,7 +5,7 @@ línea del devnet.
 
 > **Desechable por declaración.** Un devnet con tokens gratis contesta preguntas de software, no
 > de economía. **Fecha de reset: el día que se elija la regla de la tasa de permanencia** (§10.3),
-> porque ése es el número que cambia el espacio de parámetros que Genesis tiene que anticipar.
+> porque ése es el número que cambia el espacio de parámetros que Geminis tiene que anticipar.
 
 | criterio | veredicto |
 |---|---|

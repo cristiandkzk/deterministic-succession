@@ -63,7 +63,7 @@ transacción.
 > 32,0 / 1,0 / 0,125 / 0,016 igual que acá. Lo que no se sostiene es *"decisión de
 > implementación"*: **el piso de permanencia de §8.5 se deriva del costo de actualizar
 > el árbol, y el piso se quema**, así que dos nodos con `d` distinto no coincidirían
-> sobre cuánto se quemó al crear una entrada. `d` pasó a ser constante de Genesis
+> sobre cuánto se quemó al crear una entrada. `d` pasó a ser constante de Geminis
 > (`CORTE_ARBOL`).
 >
 > Y aparece una tercera moneda que esta medición no miraba: **con `d=6` el piso es el

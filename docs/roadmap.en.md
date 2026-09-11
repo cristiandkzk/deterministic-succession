@@ -71,19 +71,19 @@ no prices, no oracles, no votes, and nobody's clock.
 3. **Activation** — `Δ` blocks **after lock-in**, not after the trigger. That way the integrator's
    notice is exactly `Δ` and does not depend on how long finality took.
 
-**`Δ` (delta).** The notice window, fixed at genesis **per transition class**. A circulation
+**`Δ` (delta).** The notice window, fixed at geminis **per transition class**. A circulation
 transition tolerates a long `Δ`; an urgent cryptographic migration needs a short one.
 
-**Lineage / `H0_B`.** `H0_B = H( H0_A || state_trigger || new_params )`. It is not the genesis of a
+**Lineage / `H0_B`.** `H0_B = H( H0_A || state_trigger || new_params )`. It is not the geminis of a
 new chain: it is a **generational checkpoint marker** inside the same chain. It makes lineage
-verifiable with a hash from any generation backward. Genesis A does not know B's hash — it cannot
+verifiable with a hash from any generation backward. Geminis A does not know B's hash — it cannot
 — but it knows how it will be computed.
 
 **The five invariants (I1–I5).** The hard frame. Each eliminates a way of putting the human back
 in the loop. **In the implementation they are not documentation: they are executable assertions
 every phase must keep passing** (see Phase 0).
 
-- **I1** — the interpreter lives in genesis and **never changes**. A transition selects a point in
+- **I1** — the interpreter lives in geminis and **never changes**. A transition selects a point in
   a space the node already knows how to execute; it introduces no node code.
 - **I2** — the trigger is computed from state alone, **and nobody picks the moment**. Computable is
   not enough: *"address X received 1 wei"* is computed from state and is a gate with an owner. There
@@ -115,11 +115,11 @@ clock would be an oracle). **These are security conditions, not performance ones
 prevents a challenge that is more expensive to verify than to create.
 
 The step cap **is not a chosen number: it is a calculation** — `f* × block_time × R_declared /
-tx_per_block` — and what genesis freezes is the formula, not the value. *(Closed 2026-08-20; it was
+tx_per_block` — and what geminis freezes is the formula, not the value. *(Closed 2026-08-20; it was
 the first open problem in §10.3.)*
 
 The page cap **is also derived**, since 2026-08-21: it is a ruleset parameter — 96 pages of 4 KiB
-at genesis — and what genesis freezes is the **curve** of rate against memory. **Phase 4 added it
+at geminis — and what geminis freezes is the **curve** of rate against memory. **Phase 4 added it
 and it was not in the design:** a step cap alone assumes a step is a step, and the worst instruction
 mix runs 23× slower than the real load. It isn't fixed by weighting instructions — a load costs the
 same as an add with the data in cache and 23× more without it, **it's the same opcode** — so you have
@@ -175,7 +175,7 @@ that do not hold here.
    there is no transaction until they signed.
 5. **Forking is not resolved, it is prevented by construction.** The standard client switches on its
    own, so **not switching requires actively modifying the software**. Whoever stays on the old rules
-   is not preserving the original chain: they are diverging from genesis, and that is verifiable with
+   is not preserving the original chain: they are diverging from geminis, and that is verifiable with
    a hash. No "pick the good branch" logic is needed.
 
 ---
@@ -192,7 +192,7 @@ The structure follows the paper's pieces, so the document ↔ code mapping is di
 
 ```
 genesis/
-├── protocolo/            # what genesis freezes and never changes (I1)
+├── protocolo/            # what geminis freezes and never changes (I1)
 │   ├── genesis.py          # block 0: initial ruleset, descendant space,
 │   │                       #   Δ per transition class, θ*, L_max
 │   ├── invariantes.py      # I1-I5 as executable assertions -- not comments
@@ -262,7 +262,7 @@ And its corollary, which applies to everything that follows:
 > tokens there is no revenue, no hoarding, no way to measure storage-demand elasticity, and the
 > anti-spam is untested. Worse: fabricated activity is indistinguishable from real demand — and
 > there it is also free. **Everything built here is disposable by declaration**, and has to be
-> rewritten once it is known what parameter space genesis must anticipate.
+> rewritten once it is known what parameter space geminis must anticipate.
 
 ---
 
@@ -332,7 +332,7 @@ measured identical across architectures. It gets reused.
 
 - the interpreter's budget fits **under real block load**, not in an isolated benchmark;
 - floating point is forbidden or canonicalized **before the challenge runs for the first time** — it
-  is a condition on genesis and cannot be lifted afterward;
+  is a condition on geminis and cannot be lifted afterward;
 - step counting reproduces bit for bit between x86-64 and ARM64.
 
 **Run 2026-08-20, six criteria passed and the seventh failed** — and the failure is what made the

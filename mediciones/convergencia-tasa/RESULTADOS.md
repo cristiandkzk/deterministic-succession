@@ -118,7 +118,7 @@ para almacenamiento de estado no es una suposición barata.
 
 **Lo que sí cambió, y es una mejora real:**
 
-> El problema abierto pasa de *«Genesis tiene que conocer el precio»*, que la cadena no puede
+> El problema abierto pasa de *«Geminis tiene que conocer el precio»*, que la cadena no puede
 > resolver ni en principio, a *«la demanda de guardado tiene que tener elasticidad mayor a 2,05
 > en 25 épocas»*, **que es una pregunta empírica sobre un mercado**.
 

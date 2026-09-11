@@ -86,7 +86,7 @@ Regla candidata: *cuando el término de la bomba llegue a `2^40`, correrla.*
 | Gray Glacier | 15.050.000 | 14.900.000 | −150.000 | 23 |
 
 **Desvío máximo 235.000 bloques (37 días). Medio, 127.000 (20 días). Una
-coincidencia exacta.** Con un único número elegido en Genesis, y sin leer nada más
+coincidencia exacta.** Con un único número elegido en Geminis, y sin leer nada más
 que la altura y el offset vigente.
 
 **El umbral `2^40` no se eligió a mano: es el que minimiza el desvío máximo en un
@@ -139,7 +139,7 @@ comprobación independiente que tiene esta medición y la pasa.
 1,504. Y no es ruido: hay una tendencia temporal. Los tres primeros forks (2017-2020)
 van de 0,76 a 1,50; los tres últimos (2021-2022), de 0,04 a 0,32. **Los humanos
 aprendieron a actuar cada vez más temprano**, y eso es exactamente lo que una regla
-escrita en Genesis no puede hacer.
+escrita en Geminis no puede hacer.
 
 > **Esto refuerza el problema, no la solución.** Un umbral fijo elegido en 2015 habría
 > sido el equivocado en los dos extremos: demasiado tardío para el criterio de 2017,
@@ -201,7 +201,7 @@ que una `TRANSITION_RULE` no lee y no debería leer.
 - **No demuestra que Ethereum debería haberla escrito.** En 2015, el número `2^40`
   no estaba disponible: se lo conoce ahora, mirando hacia atrás. La medición 1 dice
   precisamente eso — **los humanos nunca convergieron a ese número**, y una cadena
-  que hubiera escrito la regla en Genesis habría tenido que elegirlo a ciegas. Es la
+  que hubiera escrito la regla en Geminis habría tenido que elegirlo a ciegas. Es la
   primera frontera de §10.1 instanciada por segunda vez, después de la EDA de
   Bitcoin Cash: *escribir la regla por adelantado no elimina el fork, lo mueve al
   caso en que la regla escrita es la equivocada.*
@@ -300,7 +300,7 @@ habría subido nada. Habría tenido razón según su propio criterio y le habrí
 la red.
 
 > **Y el filo verdadero es anterior a eso.** ¿Podría la regla haber subido el target a
-> 6 en abril de 2024? Sólo si el 6 estaba en el espacio declarado en Genesis **y era
+> 6 en abril de 2024? Sólo si el 6 estaba en el espacio declarado en Geminis **y era
 > seguro**, y no era seguro hasta que existió PeerDAS. El techo del espacio de
 > descendientes está acotado por una tecnología que todavía no existía. Es la primera
 > frontera de §10.1 en su forma más dura para este caso: **no es que la regla escrita
@@ -381,7 +381,7 @@ vuelve ahí. **Con el fee moviéndose 650×, la ocupación no se mueve.**
 ## Medición C · la única señal es el fee, y ninguna de sus dos formas sirve
 
 **Forma nominal.** El fee mediano cayó **650×**. Cualquier umbral en gwei elegido en
-Genesis deja de significar lo que significaba. Es literalmente el hallazgo de C7.13,
+Geminis deja de significar lo que significaba. Es literalmente el hallazgo de C7.13,
 confirmado en otro parámetro y con datos de terceros.
 
 **Forma adimensional** —el fee contra su propia mediana anual, que es escalable y sale
@@ -450,7 +450,7 @@ admite cuando no hay empate: **la diferencia está medida y explicada.**
    se movía mientras aprendían; y las dos últimas subas de blobs respondieron a una
    capacidad nueva que no es un hecho del estado;
 3. **§10.1 tiene ahora casos medidos, y una forma más dura que la escrita**: no sólo la
-   regla escrita puede ser la equivocada — **el espacio declarado en Genesis puede
+   regla escrita puede ser la equivocada — **el espacio declarado en Geminis puede
    quedar corto** por una tecnología que no existía al declararlo;
 4. **§10.3, problema abierto 2, tiene una segunda instancia independiente**, y la
    salida que C7.13 había propuesto —indexar a la ocupación— queda **empíricamente

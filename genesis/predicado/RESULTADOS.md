@@ -15,18 +15,18 @@ escritorio x86-64 aparece sólo donde la comparación entre máquinas es el punt
 | **C6** fuera de rango es trampa, no envolver | **aprobado** |
 | **C7** el paso es una unidad honesta | **REPROBADO por 23×** |
 
-**C7 es el resultado de la fase.** Movió tres constantes de Genesis, bajó la capacidad del
+**C7 es el resultado de la fase.** Movió tres constantes de Geminis, bajó la capacidad del
 bloque de 67 a 15 transacciones, dejó abierto un problema que el paper no tenía, y destapó **un
 muro en el diseño**: el segundo techo, escrito como constante, excluía primitivas en vez de
 encarecerlas. Eso último es lo único que tocaba el núcleo, y se cerró el 21/8.
 
 ---
 
-## Lo que quedó en Genesis
+## Lo que quedó en Geminis
 
 | qué | antes | ahora |
 |---|---:|---:|
-| `R_declarado` | 300 M pasos/s, constante | **una curva medida**, 70 M en el punto de Genesis |
+| `R_declarado` | 300 M pasos/s, constante | **una curva medida**, 70 M en el punto de Geminis |
 | presupuesto de páginas | — | **96**, y es un parámetro del ruleset |
 | `tx_por_bloque` | 67 | **15** |
 | techo de pasos | 6.716.417 | **7.000.000** |
@@ -141,9 +141,9 @@ capacidad de 15 a 11 transacciones. Un precio, no un muro.
 > daba el mismo número y **se cayó**, porque se apoyaba en una medición rota. Ver abajo.
 
 > **Cerrado el 21/8/2026.** Mientras el presupuesto fue constante, una primitiva que necesitara
-> más de 96 páginas no tenía precio que pagar. Ahora Genesis congela **la curva** de ritmo contra
+> más de 96 páginas no tenía precio que pagar. Ahora Geminis congela **la curva** de ritmo contra
 > memoria y el presupuesto es un parámetro del ruleset: pedir más páginas baja `R_declarado`, que
-> baja el techo de pasos, que se paga en capacidad. **El punto de Genesis no se movió** —96
+> baja el techo de pasos, que se paga en capacidad. **El punto de Geminis no se movió** —96
 > páginas, 15 tx, 7.000.000 de pasos—; lo que cambió es que ahora todo punto tiene precio:
 >
 > | páginas | KiB | `R` declarado | tx a 2× |

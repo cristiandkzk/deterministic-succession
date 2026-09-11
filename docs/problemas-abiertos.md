@@ -44,7 +44,7 @@ trabajando. El claim además es **irrepetible**.
 
 ### C · ¿La tarea de referencia es replayable?
 
-Si la instancia es fija y publicada en Genesis, el primero que la resuelve publica la
+Si la instancia es fija y publicada en Geminis, el primero que la resuelve publica la
 solución y **el costo del claim colapsa a cero para todos los demás**. Se arreglaría
 derivando la instancia de la clave del reclamante — *no está escrito*.
 
@@ -192,7 +192,7 @@ supera **2,05**.
 
 Así que el problema **no se cierra: se reubica**, que es exactamente la rama que
 [`CRITERIOS.md`](../mediciones/convergencia-tasa/CRITERIOS.md) declaró de antemano. Pasa de
-*"Genesis tiene que conocer el precio"* —irresoluble por construcción— a **"la demanda de
+*"Geminis tiene que conocer el precio"* —irresoluble por construcción— a **"la demanda de
 guardado tiene elasticidad mayor a 2,05 en 25 épocas"**, que es una pregunta empírica sobre un
 mercado. Sigue sin ser una cuenta que la cadena pueda hacer, pero ahora alguien la puede medir.
 
@@ -277,13 +277,13 @@ un ataque no gaste tiempo redescubriéndolos.
 ### Correr el benchmark en más máquinas
 
 El [problema abierto 1](#1--cuál-hardware-es-el-peor-caso) no se cierra pensando: se cierra
-con más hardware. **El número que salga de ahí es una constante de Genesis.**
+con más hardware. **El número que salga de ahí es una constante de Geminis.**
 
 Lo que hace falta es correr las mezclas adversariales en todo lo que se consiga —otro
 teléfono, un ARM de servidor, una notebook, un núcleo grande de x86— y ver dónde cae la peor
 mezcla. El benchmark es un crate de Rust chico y sin dependencias:
 
-    cd genesis/predicado/vm
+    cd geminis/predicado/vm
     cargo run --release --bin mezclas     # la tabla de mezclas de instrucciones
     cargo run --release --bin conjunto    # el barrido de conjunto de trabajo
 

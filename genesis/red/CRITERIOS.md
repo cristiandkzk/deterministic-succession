@@ -44,7 +44,7 @@ que activar el ruleset nuevo en la misma altura sin que nadie se lo diga.
 
 Hasta ahora `verificar_linaje` corrió sobre checkpoints que el mismo proceso había creado.
 
-**Aprobado si** el que sincroniza verifica la cadena de `H0_B` desde Genesis sobre checkpoints
+**Aprobado si** el que sincroniza verifica la cadena de `H0_B` desde Geminis sobre checkpoints
 que recibió, y **falla si se altera cualquiera de los tres insumos** —`H0_A`, `state_trigger` o
 los parámetros—.
 

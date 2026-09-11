@@ -129,7 +129,7 @@ teléfono.
 más análisis.** Si corrés el arnés y pegás tus números, eso es un problema abierto declarado
 que se cierra. Sin más dependencias que el toolchain de Rust:
 
-    cd genesis/predicado/vm
+    cd geminis/predicado/vm
     cargo run --release --bin mezclas     # la tabla de mezclas de instrucciones
     cargo run --release --bin conjunto    # el barrido de conjunto de trabajo
 
@@ -159,7 +159,7 @@ el propio paper llama el riesgo dominante. Nunca se le preguntó a nadie si paga
 el [ataque A](docs/problemas-abiertos.md).
 
 **Todo lo de acá es desechable por declaración.** Los parámetros son de juguete: no se sabe
-todavía qué espacio tiene que anticipar Genesis, así que estos números existen para que el
+todavía qué espacio tiene que anticipar Geminis, así que estos números existen para que el
 mecanismo corra, no para heredarlos.
 
 ---

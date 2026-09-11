@@ -45,7 +45,7 @@ is decoupled from work, holding tokens gives no reason to keep working. The clai
 
 ### C · Is the reference task replayable?
 
-If the instance is fixed and published at genesis, the first to solve it publishes the solution
+If the instance is fixed and published at geminis, the first to solve it publishes the solution
 and **the cost of the claim collapses to zero for everyone else**. It would be fixed by deriving
 the instance from the claimant's key — *that is not written*.
 
@@ -193,7 +193,7 @@ demand exceeds **2.05**.
 
 So the problem **does not close: it relocates**, which is exactly the branch
 [`CRITERIOS.md`](../mediciones/convergencia-tasa/CRITERIOS.md) declared in advance. It goes from
-*"genesis must know the price"* — unsolvable by construction — to **"storage demand has
+*"geminis must know the price"* — unsolvable by construction — to **"storage demand has
 elasticity above 2.05 over 25 epochs"**, an empirical question about a market. Still not a
 calculation the chain can perform, but now one somebody can measure.
 
@@ -276,13 +276,13 @@ spend time rediscovering them.
 ### Run the benchmark on more machines
 
 [Open problem 1](#1--which-hardware-is-the-worst-case) doesn't close by thinking: it closes with
-more hardware. **The number that comes out of it is a genesis constant.**
+more hardware. **The number that comes out of it is a geminis constant.**
 
 What is needed is to run the adversarial mixes on anything available — another phone, a server ARM,
 a laptop, a large x86 core — and see where the worst mix lands. The benchmark is a small Rust crate
 with no dependencies:
 
-    cd genesis/predicado/vm
+    cd geminis/predicado/vm
     cargo run --release --bin mezclas     # the instruction-mix table
     cargo run --release --bin conjunto    # the working-set sweep
 

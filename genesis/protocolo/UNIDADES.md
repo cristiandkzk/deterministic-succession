@@ -58,7 +58,7 @@ VM**. Los tres en negrita son los que redefinen unidades de otras cosas.
 
 **Compra tiempo de reacción.** Y está denominada en bloques, con estos valores:
 
-| clase | `Δ` | bloque de 1 s | bloque de 6 s (Genesis) | bloque de 60 s |
+| clase | `Δ` | bloque de 1 s | bloque de 6 s (Geminis) | bloque de 60 s |
 |---|---:|---:|---:|---:|
 | circulación | 64 bloques | 1,1 min | **6,4 min** | 64 min |
 | criptográfica | 8 bloques | 8 s | **48 s** | 8 min |
