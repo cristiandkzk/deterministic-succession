@@ -116,6 +116,16 @@ obvious.
 > **Two machines are not enough to set a floor, and closing it needs more machines, not more
 > analysis.** See [part 3](#part-3--what-needs-measurement-not-analysis).
 
+**Update, 2026-09-13 — a third machine, and this time it breaks.** An Amlogic S805 (Meson8b,
+Cortex-A5, 32-bit ARMv7) ran the same reference block and came back at **2,499 ms of 1,500:
+1.67× over, failed** — the first of the three machines that doesn't fit the real budget. And the
+interesting part isn't just that it fails: the **ratio** (the metric this same page uses to
+compare across architectures) didn't predict it, because on this machine the most expensive mix
+is no longer the memory pattern (`pointer-chasing`) but **integer division** (`divu`) — a
+bottleneck the second ceiling in §6.6.1 doesn't charge for, since it was designed for the other
+pattern. Full detail in
+[`mediciones/hardware/RESULTADOS.md`](../mediciones/hardware/RESULTADOS.md).
+
 ### 2 · The permanence-rate rule, and the level it starts from
 
 That the rate cannot stay frozen is already established: **a fixed nominal price cannot ration a

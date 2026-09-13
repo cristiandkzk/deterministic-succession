@@ -114,6 +114,16 @@ frase de que *el hardware más barato es el peor caso*, que aparecía como obvia
 > **Dos máquinas no alcanzan para fijar un piso, y cerrarlo necesita más máquinas, no más
 > análisis.** Ver [parte 3](#parte-3--lo-que-necesita-medición-y-no-análisis).
 
+**Actualización del 13/9/2026 — una tercera máquina, y esta vez rompe.** Un Amlogic S805
+(Meson8b, Cortex-A5, ARMv7 de 32 bits) corrió el mismo bloque de referencia y dio **2.499 ms de
+1.500: 1,67× por encima, reprobado** — la primera máquina de las tres que no entra en el
+presupuesto real. Y lo interesante no es solo que rompe: el **cociente** (la métrica que esta
+misma página usa para comparar entre arquitecturas) no lo predijo, porque en esta máquina la
+mezcla más cara ya no es el patrón de memoria (`lw-persecución`) sino la **división entera**
+(`divu`) — un cuello de botella que el segundo techo de §6.6.1 no cobra, porque se diseñó para
+el otro patrón. Detalle completo en
+[`mediciones/hardware/RESULTADOS.md`](../mediciones/hardware/RESULTADOS.md).
+
 ### 2 · La regla de la tasa de permanencia, y el nivel del que parte
 
 Que la tasa no puede quedar congelada ya está dicho: **un precio nominal fijo no puede
