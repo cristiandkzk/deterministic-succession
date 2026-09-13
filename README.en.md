@@ -130,7 +130,7 @@ dispersion is 44–79 M steps/s depending on when you run it, against 1.6% on th
 not more analysis.** If you run the harness and post your numbers, that is a declared open
 problem getting closed. No dependencies beyond the Rust toolchain:
 
-    cd geminis/predicado/vm
+    cd genesis/predicado/vm
     cargo run --release --bin mezclas     # the instruction-mix table
     cargo run --release --bin conjunto    # the working-set sweep
 

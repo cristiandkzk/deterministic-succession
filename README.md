@@ -129,7 +129,7 @@ teléfono.
 más análisis.** Si corrés el arnés y pegás tus números, eso es un problema abierto declarado
 que se cierra. Sin más dependencias que el toolchain de Rust:
 
-    cd geminis/predicado/vm
+    cd genesis/predicado/vm
     cargo run --release --bin mezclas     # la tabla de mezclas de instrucciones
     cargo run --release --bin conjunto    # el barrido de conjunto de trabajo
 

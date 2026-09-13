@@ -293,7 +293,7 @@ Lo que hace falta es correr las mezclas adversariales en todo lo que se consiga 
 teléfono, un ARM de servidor, una notebook, un núcleo grande de x86— y ver dónde cae la peor
 mezcla. El benchmark es un crate de Rust chico y sin dependencias:
 
-    cd geminis/predicado/vm
+    cd genesis/predicado/vm
     cargo run --release --bin mezclas     # la tabla de mezclas de instrucciones
     cargo run --release --bin conjunto    # el barrido de conjunto de trabajo
 

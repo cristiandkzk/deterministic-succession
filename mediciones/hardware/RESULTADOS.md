@@ -9,7 +9,7 @@ proyecto que no cierra pensando: cierra con más máquinas.
 > [measurement template](https://github.com/cristiandkzk/deterministic-succession/issues/new?template=medicion.yml) — or paste the
 > output in the thread and it gets transcribed here.
 >
->     cd geminis/predicado/vm
+>     cd genesis/predicado/vm
 >     cargo run --release --bin mezclas     # instruction mixes
 >     cargo run --release --bin conjunto    # working-set sweep
 >

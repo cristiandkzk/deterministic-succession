@@ -292,7 +292,7 @@ What is needed is to run the adversarial mixes on anything available — another
 a laptop, a large x86 core — and see where the worst mix lands. The benchmark is a small Rust crate
 with no dependencies:
 
-    cd geminis/predicado/vm
+    cd genesis/predicado/vm
     cargo run --release --bin mezclas     # the instruction-mix table
     cargo run --release --bin conjunto    # the working-set sweep
 
